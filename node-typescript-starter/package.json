@@ -1,0 +1,14 @@
+{
+  "name": "node-typescript-starter",
+  "version": "1.0.0",
+  "description": "Node project starter with Typescript, ESLint and Prettier",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^4.1.3"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.22",
+    "ts-node": "^9.1.1"
+  }
+}
