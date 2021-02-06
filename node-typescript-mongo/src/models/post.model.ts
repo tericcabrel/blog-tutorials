@@ -5,12 +5,26 @@ type CommentType = {
   voteCount: number;
 };
 
+enum TagEnum {
+  Node = 'Node.js',
+  Java = 'Java',
+  React = 'React',
+  GraphQL = 'GraphQL',
+  Spring = 'Spring',
+  Typescript = 'Typescript',
+  Express = 'Express',
+  Docker = 'Docker',
+  Jest = 'Jest',
+  Jenkins = 'Jenkins',
+  AWS = 'AWS',
+}
+
 type PostType = {
   title: string;
   content: string;
   viewCount: number;
   author: string;
-  tags: string[];
+  tags: TagEnum[];
   isPublished: boolean;
   comments: CommentType[];
 };
@@ -47,6 +61,7 @@ const postSchema = new Schema(
     },
     tags: {
       type: [String],
+      enum: TagEnum,
     },
     isPublished: {
       type: Boolean,
@@ -69,4 +84,4 @@ const postSchema = new Schema(
 
 const Post: Model<Document<PostType>> = mongoose.model('Post', postSchema);
 
-export { Post };
+export { Post, PostType, CommentType, TagEnum };

@@ -1,15 +1,13 @@
 import mongoose, { Document, Schema, Model } from 'mongoose';
 
 type UserType = {
-  firstName: string;
-  lastName: string;
-  dateOfBirth: string;
+  name: string;
+  dateOfBirth: Date;
   location: {
     country: string;
     city: string;
   };
   email: string;
-  phone: string;
 };
 
 const userSchema = new Schema(
@@ -20,11 +18,7 @@ const userSchema = new Schema(
       unique: true,
       index: true,
     },
-    firstName: {
-      type: String,
-      required: true,
-    },
-    lastName: {
+    name: {
       type: String,
       required: true,
     },
@@ -36,10 +30,6 @@ const userSchema = new Schema(
       country: String,
       city: String,
     },
-    phone: {
-      type: String,
-      required: true,
-    },
   },
   {
     timestamps: true,
@@ -47,6 +37,6 @@ const userSchema = new Schema(
   },
 );
 
-const User: Model<Document<UserType>> = mongoose.model('User', userSchema);
+const User: Model<Document> = mongoose.model('User', userSchema);
 
-export { User };
+export { User, UserType };
