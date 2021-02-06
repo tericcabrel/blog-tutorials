@@ -1,6 +1,6 @@
 import mongoose, { Document, Schema, Model } from 'mongoose';
 
-type UserType = {
+type UserDocument = Document & {
   name: string;
   dateOfBirth: Date;
   location: {
@@ -8,6 +8,13 @@ type UserType = {
     city: string;
   };
   email: string;
+};
+
+type UserInput = {
+  name: UserDocument['name'];
+  dateOfBirth: UserDocument['dateOfBirth'];
+  location: UserDocument['location'];
+  email: UserDocument['email'];
 };
 
 const userSchema = new Schema(
@@ -37,6 +44,6 @@ const userSchema = new Schema(
   },
 );
 
-const User: Model<Document> = mongoose.model('User', userSchema);
+const User: Model<UserDocument> = mongoose.model('User', userSchema);
 
-export { User, UserType };
+export { User, UserDocument, UserInput };

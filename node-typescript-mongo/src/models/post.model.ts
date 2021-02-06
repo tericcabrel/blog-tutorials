@@ -1,6 +1,7 @@
 import mongoose, { Document, Schema, Model } from 'mongoose';
+import { UserDocument } from './user.model';
 
-type CommentType = {
+type CommentInput = {
   text: string;
   voteCount: number;
 };
@@ -19,14 +20,24 @@ enum TagEnum {
   AWS = 'AWS',
 }
 
-type PostType = {
+type PostDocument = Document & {
   title: string;
   content: string;
   viewCount: number;
-  author: string;
+  author: UserDocument['_id'];
   tags: TagEnum[];
   isPublished: boolean;
-  comments: CommentType[];
+  comments: CommentInput[];
+};
+
+type PostInput = {
+  title: PostDocument['title'];
+  content: PostDocument['content'];
+  viewCount: PostDocument['viewCount'];
+  author: PostDocument['author'];
+  tags: PostDocument['tags'];
+  isPublished: PostDocument['isPublished'];
+  comments: PostDocument['comments'];
 };
 
 const commentSchema = new Schema(
@@ -82,6 +93,6 @@ const postSchema = new Schema(
   },
 );
 
-const Post: Model<Document<PostType>> = mongoose.model('Post', postSchema);
+const Post: Model<PostDocument> = mongoose.model('Post', postSchema);
 
-export { Post, PostType, CommentType, TagEnum };
+export { Post, PostInput, CommentInput, TagEnum };

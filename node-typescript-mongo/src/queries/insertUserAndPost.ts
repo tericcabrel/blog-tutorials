@@ -1,8 +1,8 @@
-import { User, UserType } from '../models/user.model';
-import { Post, PostType, TagEnum } from '../models/post.model';
+import { User, UserInput } from '../models/user.model';
+import { CommentInput, Post, PostInput, TagEnum } from '../models/post.model';
 
 export const insertUserAndPost = async () => {
-  const userInput: UserType = {
+  const userInput: UserInput = {
     email: 'jon.snow@got.com',
     name: 'Jon Snow',
     dateOfBirth: new Date(1995, 1, 23),
@@ -14,7 +14,7 @@ export const insertUserAndPost = async () => {
 
   const createdUser = await User.create(userInput);
 
-  const postInput: PostType = {
+  const postInput: PostInput = {
     author: createdUser._id,
     comments: [
       {
@@ -33,4 +33,13 @@ export const insertUserAndPost = async () => {
 
   console.log(createdUser);
   console.log(createdPost);
+
+  const newComment: CommentInput = {
+    text: 'A new comment in the post created above',
+    voteCount: 32,
+  };
+
+  createdPost.comments.push(newComment);
+  const updatedPost = await createdPost.save();
+  console.log(updatedPost);
 };
