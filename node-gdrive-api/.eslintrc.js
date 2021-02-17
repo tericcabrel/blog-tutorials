@@ -42,5 +42,7 @@ module.exports = {
     'prefer-destructuring': ['error'],
     'prefer-template': 'error',
     'object-shorthand': 'warn',
+    'newline-after-var': ['error', 'always'],
+    curly: 'error',
   },
 };

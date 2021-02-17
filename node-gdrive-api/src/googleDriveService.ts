@@ -28,6 +28,7 @@ export class GoogleDriveService {
 
   createDriveClient(clientId: string, clientSecret: string, redirectUri: string, refreshToken: string) {
     const client = new google.auth.OAuth2(clientId, clientSecret, redirectUri);
+
     client.setCredentials({ refresh_token: refreshToken });
 
     return google.drive({
@@ -54,7 +55,9 @@ export class GoogleDriveService {
           fields: 'files(id, name)',
         },
         (err, res: { data: SearchResultResponse }) => {
-          if (err) return reject(err);
+          if (err) {
+            return reject(err);
+          }
 
           return resolve(res.data.files ? res.data.files[0] : null);
         },
