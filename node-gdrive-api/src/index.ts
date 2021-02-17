@@ -35,4 +35,7 @@ const driveRefreshToken = process.env.GOOGLE_DRIVE_REFRESH_TOKEN || '';
   });
 
   console.info('File uploaded successfully!');
+
+  // Delete the file on the server
+  fs.unlinkSync(finalPath);
 })();
