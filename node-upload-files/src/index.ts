@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import { connectToDatabase } from './utils/databaseConnection';
 
 dotenv.config();
 
@@ -15,6 +16,8 @@ app.get('/', (req, res) => {
   return res.json({ message: 'Hello World!' });
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
+  await connectToDatabase();
+
   console.log(`Application started on URL ${HOST}:${PORT} 🎉`);
 });
