@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import { connectToDatabase } from './utils/databaseConnection';
+import { appRoute } from './routes/appRoute';
 
 dotenv.config();
 
@@ -15,6 +16,8 @@ app.use(express.json());
 app.get('/', (req, res) => {
   return res.json({ message: 'Hello World!' });
 });
+
+app.use('/', appRoute);
 
 app.listen(PORT, async () => {
   await connectToDatabase();
