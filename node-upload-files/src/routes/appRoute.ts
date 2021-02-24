@@ -1,4 +1,6 @@
 import { Router } from 'express';
+import * as jwt from 'jsonwebtoken';
+import path from 'path';
 
 import { handleSingleUploadFile } from '../utils/uploadSingle';
 import { User, UserInput } from '../models/user';
@@ -36,6 +38,43 @@ appRoute.post('/register/user', async (req, res) => {
   const createdUser = await User.create(newUserInput);
 
   return res.json({ data: createdUser });
+});
+
+appRoute.get('/user/:id/generate-link', (req, res) => {
+  const { id } = req.params;
+  const action = req.query.action as string;
+
+  const payload = { userId: id };
+
+  const token = jwt.sign(payload, 'My#SecretKey007', { expiresIn: 1800 });
+
+  const url = `${req.protocol}://${req.hostname}:${process.env.PORT}/view-file?token=${token}&action=${action}`;
+
+  return res.json({ url });
+});
+
+appRoute.get('/view-file', async (req, res) => {
+  const { action, token } = req.query as { token: string; action: string };
+
+  try {
+    const decoded: any = jwt.verify(token, 'My#SecretKey007');
+
+    const user = await User.findOne({ _id: decoded.userId });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found!' });
+    }
+
+    const filePath = path.resolve(__dirname, '../../public/uploads', user.picture);
+
+    if (action === 'view') {
+      return res.sendFile(filePath);
+    } else {
+      return res.download(filePath);
+    }
+  } catch (err) {
+    return res.status(400).json({ message: err.message });
+  }
 });
 
 export { appRoute };
