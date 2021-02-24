@@ -4,8 +4,6 @@ import multer from 'multer';
 
 const uploadFilePath = path.resolve(__dirname, '../..', 'public/uploads');
 
-console.log(uploadFilePath);
-
 const storageFile: multer.StorageEngine = multer.diskStorage({
   destination: uploadFilePath,
   filename(req: Express.Request, file: Express.Multer.File, fn: (error: Error | null, filename: string) => void): void {

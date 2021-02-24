@@ -16,7 +16,7 @@ export type UploadedFile = {
 
 const appRoute = Router();
 
-appRoute.post('register/user', async (req, res) => {
+appRoute.post('/register/user', async (req, res) => {
   let uploadResult;
 
   try {
