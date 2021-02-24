@@ -1,5 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import path from 'path';
+
 import { connectToDatabase } from './utils/databaseConnection';
 import { appRoute } from './routes/appRoute';
 
@@ -18,6 +20,8 @@ app.get('/', (req, res) => {
 });
 
 app.use('/', appRoute);
+
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.listen(PORT, async () => {
   await connectToDatabase();
