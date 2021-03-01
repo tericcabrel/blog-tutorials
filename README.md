@@ -9,3 +9,5 @@
 [Upload file to Google Drive with Node.js](https://github.com/tericcabrel/blog-tutorials/tree/main/node-gdrive-api)
 
 [Upload files to the Node.js server with express and Multer](https://github.com/tericcabrel/blog-tutorials/tree/main/node-upload-files)
+
+[Apply conventional commit style on your project with commitlint](https://github.com/tericcabrel/blog-tutorials/tree/main/commit-lint-app)
