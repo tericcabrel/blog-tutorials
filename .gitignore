@@ -117,3 +117,5 @@ dist
 .idea
 build
 public
+
+.DS_Store
