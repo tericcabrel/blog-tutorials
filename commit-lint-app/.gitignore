@@ -116,3 +116,5 @@ dist
 
 .idea
 build
+.husky
+.DS_Store
