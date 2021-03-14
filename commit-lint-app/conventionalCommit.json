@@ -1,0 +1,43 @@
+{
+  "types": {
+    "build": {
+      "description": "Changes which affect CI configuration files and scripts"
+    },
+    "chore": {
+      "description": "Changes which aren't user-facing"
+    },
+    "enh": {
+      "description": "Changes which improve a feature"
+    },
+    "docs": {
+      "description": "Changes which affect documentation"
+    },
+    "feat": {
+      "description": "Changes which introduce a new feature"
+    },
+    "fix": {
+      "description": "Changes which patch a bug"
+    },
+    "perf": {
+      "description": "changes which improve performance."
+    },
+    "refactor": {
+      "description": "Changes which neither fix a bug nor add a feature"
+    },
+    "revert": {
+      "description": "Changes which revert a previous commit"
+    },
+    "style": {
+      "description": "Changes which don't affect code logic, such as white-spaces, formatting, missing semi-colons"
+    },
+    "test": {
+      "description": "Changes which add missing tests or correct existing tests"
+    }
+  },
+  "scopes": {
+    "app": {},
+    "library": {},
+    "authentication": {},
+    "settings": {}
+  }
+}
