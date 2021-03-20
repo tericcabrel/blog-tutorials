@@ -4,7 +4,7 @@
 
 [Use MongoDB with a Node.js application](https://github.com/tericcabrel/blog-tutorials/tree/main/node-typescript-mongo)
 
-[Create a REST API with Node.js, Express, MongoDB and Typescript](https://github.com/tericcabrel/blog-tutorials/tree/main/men-web-app)
+[Create a REST API with Node.js, Express, MongoDB and Typescript](https://github.com/tericcabrel/blog-tutorials/tree/main/node-rest-api)
 
 [Upload file to Google Drive with Node.js](https://github.com/tericcabrel/blog-tutorials/tree/main/node-gdrive-api)
 
