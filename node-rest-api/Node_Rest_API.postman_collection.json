@@ -1,0 +1,252 @@
+{
+	"info": {
+		"_postman_id": "da4a4a6c-a166-449e-829b-cb7272dec824",
+		"name": "Node Rest API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Role",
+			"item": [
+				{
+					"name": "Create Role",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"GUEST\",\n    \"description\": \"Anonymous user who can only read info\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4500/roles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4500",
+							"path": [
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all roles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4500/roles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4500",
+							"path": [
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get role",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4500/roles/60563cca3f6e29c81c8b2db1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4500",
+							"path": [
+								"roles",
+								"60563cca3f6e29c81c8b2db1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update role",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4500/roles/60563cca3f6e29c81c8b2db1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4500",
+							"path": [
+								"roles",
+								"60563cca3f6e29c81c8b2db1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete role",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"NORMAL\",\n    \"description\": \"Anonymous user who can only read info\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4500/roles/60563cca3f6e29c81c8b2db1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4500",
+							"path": [
+								"roles",
+								"60563cca3f6e29c81c8b2db1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullName\": \"John Snow\",\n    \"email\": \"john.snow@email.com\",\n    \"password\": \"D-89cxciR9L90-Vy\",\n    \"enabled\": false,\n    \"role\": \"605636683f6e29c81c8b2db0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4500/users/6056435389fe73c9df15070f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4500",
+							"path": [
+								"users",
+								"6056435389fe73c9df15070f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4500/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4500",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4500/users/6056435389fe73c9df15070f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4500",
+							"path": [
+								"users",
+								"6056435389fe73c9df15070f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullName\": \"Jamie Lannister\",\n    \"enabled\": true,\n    \"role\": \"60563cea3f6e29c81c8b2db2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4500/users/6056435389fe73c9df15070f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4500",
+							"path": [
+								"users",
+								"6056435389fe73c9df15070f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4500/users/6056435389fe73c9df15070f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4500",
+							"path": [
+								"users",
+								"6056435389fe73c9df15070f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
