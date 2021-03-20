@@ -50,7 +50,9 @@ const updateRole = async (req: Request, res: Response) => {
     return res.status(422).json({ message: 'The fields name and description are required' });
   }
 
-  const roleUpdated = await Role.updateOne({ _id: id }, { name, description });
+  await Role.updateOne({ _id: id }, { name, description });
+
+  const roleUpdated = await Role.findById(id, { name, description });
 
   return res.status(200).json({ data: roleUpdated });
 };

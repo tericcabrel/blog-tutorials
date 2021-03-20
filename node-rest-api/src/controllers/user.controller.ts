@@ -39,7 +39,7 @@ const getAllUsers = async (req: Request, res: Response) => {
 const getUser = async (req: Request, res: Response) => {
   const { id } = req.params;
 
-  const user = await User.findOne({ _id: id });
+  const user = await User.findOne({ _id: id }).populate('role').exec();
 
   if (!user) {
     return res.status(404).json({ message: `User with id "${id}" not found.` });
@@ -62,7 +62,9 @@ const updateUser = async (req: Request, res: Response) => {
     return res.status(422).json({ message: 'The fields fullName and role are required' });
   }
 
-  const userUpdated = await User.updateOne({ _id: id }, { enabled, fullName, role });
+  await User.updateOne({ _id: id }, { enabled, fullName, role });
+
+  const userUpdated = await User.findById(id);
 
   return res.status(200).json({ data: userUpdated });
 };
