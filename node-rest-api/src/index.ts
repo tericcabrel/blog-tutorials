@@ -1,9 +1,23 @@
-const addition = (a: number, b: number) => {
-  return a + b;
-};
+import express from 'express';
+import dotenv from 'dotenv';
+import { connectToDatabase } from './databaseConnection';
 
-const number1 = 5;
-const number2 = 10;
-const result = addition(number1, number2);
+dotenv.config();
 
-console.log('The result is %d', result);
+const HOST = process.env.HOST || 'http://localhost';
+const PORT = parseInt(process.env.PORT || '4500');
+
+const app = express();
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+app.get('/', (req, res) => {
+  return res.json({ message: 'Hello World!' });
+});
+
+app.listen(PORT, async () => {
+  await connectToDatabase();
+
+  console.log(`Application started on URL ${HOST}:${PORT} 🎉`);
+});
