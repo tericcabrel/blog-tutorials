@@ -11,3 +11,5 @@
 [Upload files to the Node.js server with express and Multer](https://github.com/tericcabrel/blog-tutorials/tree/main/node-upload-files)
 
 [Apply conventional commit style on your project with commitlint](https://github.com/tericcabrel/blog-tutorials/tree/main/commit-lint-app)
+
+[Minimal SpringBoot starter for a backend web application](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-starter)
