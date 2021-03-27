@@ -1,5 +1,6 @@
 package com.example.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,8 @@ public class CreateTaskDto {
   private String description;
   private TaskStatusEnum status = TaskStatusEnum.PENDING;
   private int maxDuration;
+
+  @JsonProperty("isPublic") // Required to handle boolean type properly
   private boolean isPublic;
 
   public Task toTask() {

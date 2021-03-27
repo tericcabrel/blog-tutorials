@@ -3,6 +3,8 @@ package com.example.demo.models;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,6 +36,7 @@ public class Task {
   @Lob()
   private String description;
 
+  @Enumerated(EnumType.STRING) // Store enum as string instead of number
   @Column(length = 20)
   private TaskStatusEnum status = TaskStatusEnum.PENDING;
 
