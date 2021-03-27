@@ -7,5 +7,5 @@ import com.example.demo.models.Task;
 
 @Repository
 public interface TaskRepository extends CrudRepository<Task, Integer> {
-  List<Task> findAllByIdGreaterThanOrderByIdDesc(long id);
+  List<Task> findAllByIdGreaterThanOrderByIdDesc(int id);
 }
