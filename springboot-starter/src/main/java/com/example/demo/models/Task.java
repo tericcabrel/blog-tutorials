@@ -9,6 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.Lob;
 import javax.persistence.Table;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -16,6 +20,10 @@ import org.hibernate.annotations.UpdateTimestamp;
     @Index(name = "idx_title", columnList = "title")
 })
 @Entity()
+@NoArgsConstructor
+@Accessors(chain = true)
+@Data()
+@Builder()
 public class Task {
   @Id()
   @GeneratedValue(strategy = GenerationType.AUTO)
