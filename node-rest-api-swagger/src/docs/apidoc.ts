@@ -1,3 +1,5 @@
+import { createUser, createUserBody } from './users';
+
 const apiDocumentation = {
   openapi: '3.0.1',
   info: {
@@ -33,6 +35,23 @@ const apiDocumentation = {
       name: 'Users',
     },
   ],
+  paths: {
+    users: {
+      post: createUser,
+    },
+  },
+  components: {
+    securitySchemes: {
+      bearerAuth: {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+      },
+    },
+    schemas: {
+      createUserBody,
+    },
+  },
 };
 
 export { apiDocumentation };
