@@ -1,6 +1,6 @@
-# Node Typescript Starter
+# Node Rest API with Swagger
 
-This project contains a minimal starter for Node.js project with Typescript, ESLint and Prettier already configured
+This project is a REST API with all the endpoints documented built with Node.js and Express.
 
 ## Prerequisites
 - Node.js 10+
@@ -10,6 +10,11 @@ This project contains a minimal starter for Node.js project with Typescript, ESL
 - Install dependencies
 ```bash
 yarn install
+```
+- Create local environment file
+```shell
+cp .env.example .env
+nano .env
 ```
 - Start Application
 ```bash
