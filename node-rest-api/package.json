@@ -1,7 +1,7 @@
 {
-  "name": "node-typescript-starter",
+  "name": "node-rest-api",
   "version": "1.0.0",
-  "description": "Node project starter with Typescript, ESLint and Prettier",
+  "description": "This project is a REST API with Node.js and Express.",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
