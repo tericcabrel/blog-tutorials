@@ -1,7 +1,7 @@
 {
-  "name": "node-typescript-starter",
+  "name": "node-rest-api-swagger",
   "version": "1.0.0",
-  "description": "Node project starter with Typescript, ESLint and Prettier",
+  "description": "REST API with all the endpoints documented built with Node.js and Express",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
