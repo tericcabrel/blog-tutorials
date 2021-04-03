@@ -1,6 +1,6 @@
 const createUser = {
   tags: ['Users'],
-  description: 'Create a new use in the system',
+  description: 'Create a new user in the system',
   operationId: 'createUser',
   security: [
     {
@@ -108,4 +108,58 @@ const createUserBody = {
   },
 };
 
-export { createUser, createUserBody };
+const deleteUser = {
+  tags: ['Users'],
+  description: 'Delete a user',
+  operationId: 'deleteUser',
+  security: [
+    {
+      bearerAuth: [],
+    },
+  ],
+  parameters: {
+    name: 'id',
+    in: 'path',
+    description: 'User ID',
+    required: true,
+    schema: {
+      type: 'string',
+    },
+  },
+  responses: {
+    '200': {
+      description: 'User created successfully!',
+      content: {
+        'application/json': {
+          schema: {
+            type: 'object',
+            properties: {
+              message: {
+                type: 'string',
+                example: 'User deleted successfully!',
+              },
+            },
+          },
+        },
+      },
+    },
+    '500': {
+      description: 'Internal Server Error',
+      content: {
+        'application/json': {
+          schema: {
+            type: 'object',
+            properties: {
+              message: {
+                type: 'string',
+                example: 'Internal Server Error',
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+};
+
+export { createUser, createUserBody, deleteUser };

@@ -1,4 +1,4 @@
-import { createUser, createUserBody } from './users';
+import { createUser, createUserBody, deleteUser } from './users';
 
 const apiDocumentation = {
   openapi: '3.0.1',
@@ -38,6 +38,9 @@ const apiDocumentation = {
   paths: {
     users: {
       post: createUser,
+    },
+    'users/{id}': {
+      delete: deleteUser,
     },
   },
   components: {
