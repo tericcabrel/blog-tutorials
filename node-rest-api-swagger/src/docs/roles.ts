@@ -165,15 +165,15 @@ const getRole = {
       bearerAuth: [],
     },
   ],
-  parameters: {
-    name: 'id',
-    in: 'path',
-    description: 'Role ID',
-    required: true,
-    schema: {
+  parameters: [
+    {
+      name: 'id',
+      in: 'path',
+      description: 'Role ID',
+      required: true,
       type: 'string',
     },
-  },
+  ],
   responses: {
     '200': {
       description: 'Role retrieved successfully!',
@@ -196,15 +196,15 @@ const updateRole = {
   description: 'Update a role',
   operationId: 'updateRole',
   security,
-  parameters: {
-    name: 'id',
-    in: 'path',
-    description: 'Role ID',
-    required: true,
-    schema: {
+  parameters: [
+    {
+      name: 'id',
+      in: 'path',
+      description: 'Role ID',
+      required: true,
       type: 'string',
     },
-  },
+  ],
   requestBody: {
     content: {
       'application/json': {
@@ -242,15 +242,15 @@ const deleteRole = {
       bearerAuth: [],
     },
   ],
-  parameters: {
-    name: 'id',
-    in: 'path',
-    description: 'Role ID',
-    required: true,
-    schema: {
+  parameters: [
+    {
+      name: 'id',
+      in: 'path',
+      description: 'Role ID',
+      required: true,
       type: 'string',
     },
-  },
+  ],
   responses: {
     '200': {
       description: 'Role created successfully!',

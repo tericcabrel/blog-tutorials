@@ -258,15 +258,15 @@ const getUser = {
       bearerAuth: [],
     },
   ],
-  parameters: {
-    name: 'id',
-    in: 'path',
-    description: 'User ID',
-    required: true,
-    schema: {
+  parameters: [
+    {
+      name: 'id',
+      in: 'path',
+      description: 'User ID',
+      required: true,
       type: 'string',
     },
-  },
+  ],
   responses: {
     '200': {
       description: 'User retrieved successfully!',
@@ -289,15 +289,15 @@ const updateUser = {
   description: 'Update a user',
   operationId: 'updateUser',
   security,
-  parameters: {
-    name: 'id',
-    in: 'path',
-    description: 'User ID',
-    required: true,
-    schema: {
+  parameters: [
+    {
+      name: 'id',
+      in: 'path',
+      description: 'User ID',
+      required: true,
       type: 'string',
     },
-  },
+  ],
   requestBody: {
     content: {
       'application/json': {
@@ -335,18 +335,18 @@ const deleteUser = {
       bearerAuth: [],
     },
   ],
-  parameters: {
-    name: 'id',
-    in: 'path',
-    description: 'User ID',
-    required: true,
-    schema: {
+  parameters: [
+    {
+      name: 'id',
+      in: 'path',
+      description: 'User ID',
+      required: true,
       type: 'string',
     },
-  },
+  ],
   responses: {
     '200': {
-      description: 'User created successfully!',
+      description: 'User deleted successfully!',
       content: {
         'application/json': {
           schema: {
@@ -361,7 +361,22 @@ const deleteUser = {
         },
       },
     },
-    '500': internalServerError,
+    '500': {
+      description: 'Internal Server Error',
+      content: {
+        'application/json': {
+          schema: {
+            type: 'object',
+            properties: {
+              message: {
+                type: 'string',
+                example: 'Internal Server Error',
+              },
+            },
+          },
+        },
+      },
+    },
   },
 };
 
