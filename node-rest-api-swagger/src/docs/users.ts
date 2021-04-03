@@ -172,7 +172,7 @@ const createUser = {
     required: true,
   },
   responses: {
-    '200': {
+    '201': {
       description: 'User created successfully!',
       content: {
         'application/json': {
