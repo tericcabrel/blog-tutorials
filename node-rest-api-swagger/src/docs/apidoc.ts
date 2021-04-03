@@ -1,4 +1,4 @@
-import { createUser, createUserBody, deleteUser } from './users';
+import { createUser, createUserBody, deleteUser, getUser, getUsers, updateUser, updateUserBody } from './users';
 
 const apiDocumentation = {
   openapi: '3.0.1',
@@ -38,9 +38,12 @@ const apiDocumentation = {
   paths: {
     users: {
       post: createUser,
+      get: getUsers,
     },
     'users/{id}': {
       delete: deleteUser,
+      get: getUser,
+      patch: updateUser,
     },
   },
   components: {
@@ -53,6 +56,7 @@ const apiDocumentation = {
     },
     schemas: {
       createUserBody,
+      updateUserBody,
     },
   },
 };
