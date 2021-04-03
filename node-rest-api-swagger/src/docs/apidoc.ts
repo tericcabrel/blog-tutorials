@@ -1,4 +1,5 @@
 import { createUser, createUserBody, deleteUser, getUser, getUsers, updateUser, updateUserBody } from './users';
+import { createOrUpdateRoleBody, createRole, deleteRole, getRole, getRoles, updateRole } from './roles';
 
 const apiDocumentation = {
   openapi: '3.0.1',
@@ -45,6 +46,15 @@ const apiDocumentation = {
       get: getUser,
       patch: updateUser,
     },
+    roles: {
+      post: createRole,
+      get: getRoles,
+    },
+    'roles/{id}': {
+      delete: deleteRole,
+      get: getRole,
+      put: updateRole,
+    },
   },
   components: {
     securitySchemes: {
@@ -57,6 +67,7 @@ const apiDocumentation = {
     schemas: {
       createUserBody,
       updateUserBody,
+      createOrUpdateRoleBody,
     },
   },
 };
