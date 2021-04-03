@@ -1,9 +1,11 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import swaggerUi from 'swagger-ui-express';
 
 import { connectToDatabase } from './databaseConnection';
 import { roleRoute } from './routes/role.route';
 import { userRoute } from './routes/user.route';
+import { apiDocumentation } from './docs/apidoc';
 
 dotenv.config();
 
@@ -17,6 +19,7 @@ app.use(express.json());
 
 app.use('/', roleRoute());
 app.use('/', userRoute());
+app.use('/documentation', swaggerUi.serve, swaggerUi.setup(apiDocumentation));
 
 app.get('/', (req, res) => {
   return res.json({ message: 'Hello World!' });
