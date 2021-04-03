@@ -13,3 +13,5 @@
 [Apply conventional commit style on your project with commitlint](https://github.com/tericcabrel/blog-tutorials/tree/main/commit-lint-app)
 
 [Minimal SpringBoot starter for a backend web application](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-starter)
+
+[Document a Node.js REST API with Swagger and Open API](https://github.com/tericcabrel/blog-tutorials/tree/main/node-rest-api-swagger)
