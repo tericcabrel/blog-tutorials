@@ -8,14 +8,15 @@ import com.soccer.mongo.repositories.PlayerRepository;
 import com.soccer.mongo.repositories.TeamRepository;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -44,7 +45,7 @@ public class SoccerController {
   }
 
   @PutMapping("/teams/{id}")
-  public ResponseEntity<Team> updateTeam(@RequestParam String id, @RequestBody CreateTeamDto createTeamDto) {
+  public ResponseEntity<Team> updateTeam(@PathVariable String id, @RequestBody CreateTeamDto createTeamDto) {
     Optional<Team> optionalTeam = teamRepository.findById(id);
 
     if (optionalTeam.isEmpty()) {
@@ -62,7 +63,7 @@ public class SoccerController {
   }
 
   @DeleteMapping("/teams/{id}")
-  public ResponseEntity<Void> deleteTeam(@RequestParam String id, @RequestBody CreateTeamDto createTeamDto) {
+  public ResponseEntity<Void> deleteTeam(@PathVariable String id, @RequestBody CreateTeamDto createTeamDto) {
     teamRepository.deleteById(id);
 
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -78,5 +79,28 @@ public class SoccerController {
     List<Player> playersCreated = playerRepository.saveAll(players);
 
     return new ResponseEntity<>(playersCreated, HttpStatus.CREATED);
+  }
+
+  @PostMapping("/teams/{id}/players")
+  public ResponseEntity<Team> addPlayersToTeam(@PathVariable String id, @RequestBody List<String> playerIds) {
+    Optional<Team> optionalTeam = teamRepository.findById(id);
+
+    if (optionalTeam.isEmpty()) {
+      return new ResponseEntity<>(null, HttpStatus.OK);
+    }
+
+    Team teamToUpdate = optionalTeam.get();
+
+    Set<Player> playersToAdd = playerIds.stream()
+        .map(playerId -> playerRepository.findById(playerId))
+        .filter(Optional::isPresent)
+        .map(Optional::get)
+        .collect(Collectors.toSet());
+
+    teamToUpdate.setPlayers(playersToAdd);
+
+    Team teamUpdated =  teamRepository.save(teamToUpdate);
+
+    return new ResponseEntity<>(teamUpdated, HttpStatus.OK);
   }
 }
