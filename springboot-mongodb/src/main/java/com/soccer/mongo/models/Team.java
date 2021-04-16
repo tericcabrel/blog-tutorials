@@ -4,21 +4,18 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
-import org.springframework.data.mongodb.core.mapping.FieldType;
-import org.springframework.data.mongodb.core.mapping.MongoId;
 
+@EqualsAndHashCode(callSuper = true)
 @Document(collection = "teams")
 @Accessors(chain = true)
 @Data
-public class Team {
-  @MongoId(FieldType.OBJECT_ID)
-  private String id;
-
+public class Team extends BaseModel {
   @Indexed(unique = true)
   @Field
   private String name;
@@ -28,10 +25,6 @@ public class Team {
   private String acronym;
 
   private Address address;
-
-  private Date createdAt;
-
-  private Date updatedAt;
 
   @DBRef
   private Set<Player> players;

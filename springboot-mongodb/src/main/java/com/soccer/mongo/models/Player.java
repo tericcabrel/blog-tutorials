@@ -2,22 +2,20 @@ package com.soccer.mongo.models;
 
 import java.util.Date;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.FieldType;
-import org.springframework.data.mongodb.core.mapping.MongoId;
 
+@EqualsAndHashCode(callSuper = true)
 @Document(collection = "players")
 @Accessors(chain = true)
 @NoArgsConstructor
 @Data
-public class Player {
-  @MongoId(FieldType.OBJECT_ID)
-  private String id;
-
+public class Player extends BaseModel {
   @Indexed
   private String name;
 
@@ -28,8 +26,4 @@ public class Player {
   private PlayerPosition position;
 
   private Date contractEndDate;
-
-  private Date createdAt;
-
-  private Date updatedAt;
 }
