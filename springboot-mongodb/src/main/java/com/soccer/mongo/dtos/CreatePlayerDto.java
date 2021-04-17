@@ -15,9 +15,9 @@ public class CreatePlayerDto {
 
   private PlayerPosition position;
 
-  private Date contractEndDate;
+  private boolean isAvailable;
 
   public Player toPlayer() {
-    return new Player().setName(name).setBirthDate(birthDate).setPosition(position).setContractEndDate(contractEndDate);
+    return new Player().setName(name).setBirthDate(birthDate).setPosition(position).setAvailable(isAvailable);
   }
 }

@@ -25,5 +25,5 @@ public class Player extends BaseModel {
   @Field(targetType = FieldType.STRING)
   private PlayerPosition position;
 
-  private Date contractEndDate;
+  private boolean isAvailable;
 }
