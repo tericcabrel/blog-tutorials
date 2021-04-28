@@ -13,6 +13,15 @@ enum OrderStatusEnum {
   CANCELLED = 'CANCELLED',
 }
 
+type OrderItemInput = {
+  productName: string;
+  productReference: string;
+  productPicture: string;
+  productOptions: [string, string][];
+  quantity: number;
+  price: number;
+};
+
 type OrderDocument = Document & {
   reference: string;
   status: OrderStatusEnum;
@@ -23,14 +32,7 @@ type OrderDocument = Document & {
   user: string;
   shippingAddress: string;
   billingAddress: string;
-  items: Array<{
-    productName: string;
-    productReference: string;
-    productPicture: string;
-    productOptions: Array<Array<string>>;
-    quantity: number;
-    price: number;
-  }>;
+  items: OrderItemInput[];
 };
 
 type OrderInput = {
@@ -121,9 +123,10 @@ const orderSchema = new Schema(
   {
     collection: 'store_orders',
     timestamps: true,
+    usePushEach: true,
   },
 );
 
 const Order: Model<OrderDocument> = mongoose.model('Order', orderSchema);
 
-export { Order, OrderDocument, OrderInput };
+export { Order, OrderDocument, OrderInput, OrderItemInput, PaymentModeEnum, OrderStatusEnum };
