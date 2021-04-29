@@ -129,10 +129,8 @@ export const loadDatabase = async (fakerLocale = 'fr', cleanDb = false) => {
     await User.deleteMany();
   }
 
-  for (let i = 0; i < 1; i++) {
+  for (let i = 0; i < 10; i++) {
     const itemData = generateItemData();
-
-    console.log(itemData);
 
     const [userCreated] = await User.create([itemData.user]);
 

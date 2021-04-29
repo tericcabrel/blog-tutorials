@@ -93,32 +93,34 @@ const orderSchema = new Schema(
       ref: 'Address',
       required: true,
     },
-    items: new Schema({
-      productName: {
-        type: Schema.Types.String,
-        required: true,
-      },
-      productReference: {
-        type: Schema.Types.String,
-        required: true,
-      },
-      productPicture: {
-        type: Schema.Types.String,
-        required: true,
-      },
-      productOptions: {
-        type: [[Schema.Types.String]],
-        required: true,
-      },
-      quantity: {
-        type: Schema.Types.Number,
-        required: true,
-      },
-      price: {
-        type: Schema.Types.Number,
-        required: true,
-      },
-    }),
+    items: [
+      new Schema({
+        productName: {
+          type: Schema.Types.String,
+          required: true,
+        },
+        productReference: {
+          type: Schema.Types.String,
+          required: true,
+        },
+        productPicture: {
+          type: Schema.Types.String,
+          required: true,
+        },
+        productOptions: {
+          type: Schema.Types.Array,
+          required: true,
+        },
+        quantity: {
+          type: Schema.Types.Number,
+          required: true,
+        },
+        price: {
+          type: Schema.Types.Number,
+          required: true,
+        },
+      }),
+    ],
   },
   {
     collection: 'store_orders',
