@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 
 import { connectToDatabase } from './databaseConnection';
 import { loadDatabase } from './generateData';
+import path from 'path';
 
 dotenv.config();
 
@@ -17,6 +18,8 @@ app.use(express.json());
 app.get('/', (req, res) => {
   return res.json({ message: 'Hello World!' });
 });
+
+app.use(express.static(path.resolve(__dirname, '../public')));
 
 app.listen(PORT, async () => {
   await connectToDatabase();

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>E-Store Invoice</title>
+    <link href="https://fonts.googleapis.com/css?family=Inter:400,400i,800,800i" rel="stylesheet">
+    <style type="text/css">
+        body {
+            font-family: Nunito, sans-serif;
+            font-max-size:  14px;
+        }
+        .right {
+            text-align: right;
+        }
+        .width-50 {
+            width: 50%;
+        }
+        .mb-10 {
+            margin-bottom: 10px;
+        }
+        .container {
+            width: 800px;
+            margin: auto;
+            border: solid 2px #f5f5f5;
+            min-height: 800px;
+            padding: 15px;
+        }
+        .container .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container .header .company-name {
+            margin-top: 10px;
+            color: #009efa;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .invoice-ref-row {
+            display: flex;
+            justify-content: space-between;
+        }
+        .invoice-address-title {
+            font-weight: bold;
+            font-size: 16px;
+            border-bottom: solid 2px #000;
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 5px;
+        }
+        .invoice-address {
+            display: flex;
+            justify-content: space-between;
+        }
+        .product-title {
+            background-color: #f5f5f5;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            width: 100%;
+            padding: 12px 0 7px 0;
+        }
+        .product-item {
+            display: flex;
+            margin-bottom: 25px;
+        }
+        .product-item .product-item-picture {
+            width: 20%;
+            display: flex;
+            align-items: center;
+        }
+        .product-item .product-item-info {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .product-item .product-item-price {
+            width: 20%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: end;
+            padding-right: 20px;
+        }
+        .product-item .product-item-info .product-item-info-name {
+            font-weight: bold;
+            font-size: 16px;
+            color: #211e1e;
+        }
+        .product-item .product-item-info .product-item-info-options {
+            color: grey;
+            font-size: 13px;
+        }
+        .table-order-price {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .table-order-price td {
+            padding: 4px 15px;
+        }
+        .footer {
+            text-align: center;
+            width: 100%;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="/favicon.svg" alt="Logo" />
+            <div class="company-name">E-STORE</div>
+        </div>
+        <div style="height: 20px"></div>
+        <div class="invoice-ref">
+            <div class="invoice-ref-row">
+                <div><b>Customer</b>: Michel Jordan</div>
+                <div><b>Date</b>: 04/20/2021</div>
+            </div>
+            <div style="height: 15px"></div>
+            <div class="invoice-ref-row right">
+                <div><b>Reference</b>: <a href="https://blog.tericcabrel.com">0437873803</a></div>
+            </div>
+        </div>
+        <div style="height: 30px"></div>
+        <div class="invoice-address-title">
+            <div class="width-50">SHIPPING ADDRESS</div>
+            <div class="right width-50">BILLING ADDRESS</div>
+        </div>
+        <div style="height: 10px"></div>
+        <div class="invoice-address">
+            <div class="invoice-address-shipping width-50">
+                <div class="mb-10">Joel Embiid</div>
+                <div class="mb-10">Philadelphia, United States</div>
+                <div class="mb-10">46874, Mount Hill Breadway</div>
+            </div>
+            <div class="invoice-address-shipping width-50 right">
+                <div class="mb-10">Pascal Siakam</div>
+                <div class="mb-10">Toronto, Canada</div>
+                <div class="mb-10">38232, Menlo St Downhill</div>
+            </div>
+        </div>
+        <div style="height: 20px"></div>
+        <div class="product-title">
+            PRODUCTS
+        </div>
+        <div style="height: 20px"></div>
+        <div class="products">
+            <div class="product-item">
+                <div class="product-item-picture">
+                    <img src="https://picsum.photos/100" alt="product-picture" />
+                </div>
+                <div class="product-item-info">
+                    <div class="product-item-info-name">BD Plastipak Luer Lock - Syringes</div>
+                    <div style="height: 8px"></div>
+                    <div class="product-item-info-options">
+                        <span style="padding-right: 50px">SIZE: <b>16 cm</b></span>
+                        <span>PACKAGING: <b>Single</b></span>
+                    </div>
+                </div>
+                <div class="product-item-price">
+                    <div>Qty: 02</div>
+                    <div style="height: 8px"></div>
+                    <div><b>€42.98</b></div>
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="product-item-picture">
+                    <img src="https://picsum.photos/100" alt="product-picture" />
+                </div>
+                <div class="product-item-info">
+                    <div class="product-item-info-name">BD Plastipak Luer Lock - Syringes</div>
+                    <div style="height: 8px"></div>
+                    <div class="product-item-info-options">
+                        <span style="padding-right: 50px">SIZE: <b>16 cm</b></span>
+                        <span>PACKAGING: <b>Single</b></span>
+                    </div>
+                </div>
+                <div class="product-item-price">
+                    <div>Qty: 02</div>
+                    <div style="height: 8px"></div>
+                    <div><b>€42.98</b></div>
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="product-item-picture">
+                    <img src="https://picsum.photos/100" alt="product-picture" />
+                </div>
+                <div class="product-item-info">
+                    <div class="product-item-info-name">BD Plastipak Luer Lock - Syringes</div>
+                    <div style="height: 8px"></div>
+                    <div class="product-item-info-options">
+                        <span style="padding-right: 50px">SIZE: <b>16 cm</b></span>
+                        <span>PACKAGING: <b>Single</b></span>
+                    </div>
+                </div>
+                <div class="product-item-price">
+                    <div>Qty: 02</div>
+                    <div style="height: 8px"></div>
+                    <div><b>€42.98</b></div>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 20px; border-bottom: solid 2px #f5f5f5"></div>
+        <div style="height: 20px"></div>
+        <table border="1" class="table-order-price">
+            <tbody>
+                <tr>
+                    <td>Subtotal</td>
+                    <td class="right">€639.5</td>
+                </tr>
+                <tr>
+                    <td>Shipping</td>
+                    <td class="right">€25.5</td>
+                </tr>
+                <tr>
+                    <td>Sales Tax</td>
+                    <td class="right">€35.5</td>
+                </tr>
+                <tr>
+                    <td style="padding-top: 10px"><b>TOTAL</b></td>
+                    <td style="padding-top: 10px" class="right"><b>€700.5</b></td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="height: 30px"></div>
+        <div class="footer">&copy; 2021 E-Store Ltd.</div>
+    </div>
+</body>
+</html>
