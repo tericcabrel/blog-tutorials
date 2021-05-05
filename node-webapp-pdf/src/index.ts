@@ -1,10 +1,12 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import path from 'path';
+import expressHandlebars from 'express-handlebars';
 
 import { connectToDatabase } from './databaseConnection';
 import { loadDatabase } from './generateData';
 import { findAll, findOne } from './controllers/order.controller';
+import { Order } from './models/order.model';
 
 dotenv.config();
 
@@ -16,12 +18,21 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.engine('handlebars', expressHandlebars());
+app.set('view engine', 'handlebars');
+app.set('views', path.resolve(__dirname, './views'));
+
 app.get('/', (req, res) => {
   return res.json({ message: 'Hello World!' });
 });
 
 app.get('/orders', findAll);
 app.get('/orders/:id', findOne);
+app.get('/orders/:id/view', async (req, res) => {
+  const order = await Order.findById(req.params.id).populate('user', 'billingAddress', 'shippingAddress').exec();
+
+  res.render('invoice', { order });
+});
 
 app.use(express.static(path.resolve(__dirname, '../public')));
 
