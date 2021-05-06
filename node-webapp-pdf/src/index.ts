@@ -18,7 +18,20 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.engine('handlebars', expressHandlebars());
+const hbs = expressHandlebars.create({
+  helpers: {
+    round: function (number) {
+      return number / 100;
+    },
+    date: function (dateString) {
+      const date = new Date(dateString);
+
+      return `${date.getMonth() + 1}/${date.getDate() + 1}/${date.getFullYear()}`;
+    },
+  },
+});
+
+app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.set('views', path.resolve(__dirname, './views'));
 
