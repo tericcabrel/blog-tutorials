@@ -5,7 +5,7 @@ import expressHandlebars from 'express-handlebars';
 
 import { connectToDatabase } from './databaseConnection';
 import { loadDatabase } from './generateData';
-import { findAll, findOne } from './controllers/order.controller';
+import {findAll, findOne, viewOrder} from './controllers/order.controller';
 import { Order } from './models/order.model';
 
 dotenv.config();
@@ -28,18 +28,14 @@ app.get('/', (req, res) => {
 
 app.get('/orders', findAll);
 app.get('/orders/:id', findOne);
-app.get('/orders/:id/view', async (req, res) => {
-  const order = await Order.findById(req.params.id).populate('user', 'billingAddress', 'shippingAddress').exec();
-
-  res.render('invoice', { order });
-});
+app.get('/orders/:id/view', viewOrder);
 
 app.use(express.static(path.resolve(__dirname, '../public')));
 
 app.listen(PORT, async () => {
   await connectToDatabase();
 
-  await loadDatabase(process.env.FAKER_LOCALE, process.env.CLEAN_DB === 'true');
+  // await loadDatabase(process.env.FAKER_LOCALE, process.env.CLEAN_DB === 'true');
 
   console.log(`Application started on URL ${HOST}:${PORT} 🎉`);
 });

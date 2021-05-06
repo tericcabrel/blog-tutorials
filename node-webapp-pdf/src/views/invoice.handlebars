@@ -102,13 +102,13 @@
 
 <div class="container">
     <div class="header">
-        <img src="/favicon.svg" alt="Logo" />
-        <div class="company-name">E-STORE</div>
+        <img src="/logo.svg" alt="Logo" />
+        <div class="company-name">E-STORE - {{ user.name }}</div>
     </div>
     <div style="height: 20px"></div>
     <div class="invoice-ref">
         <div class="invoice-ref-row">
-            <div><b>Customer</b>: Michel Jordan</div>
+            <div><b>Customer</b>: {{ order.user.firstName }}</div>
             <div><b>Date</b>: 04/20/2021</div>
         </div>
         <div style="height: 15px"></div>
