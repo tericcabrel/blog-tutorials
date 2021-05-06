@@ -23,7 +23,10 @@ const viewOrder = async (req: Request, res: Response) => {
     .populate({ path: 'billingAddress', model: Address })
     .exec();
 
-  res.render('invoice', { order: order?.toJSON() });
+  // @ts-ignore
+  const subTotal = order.totalAmount - (order.shippingAmount + order.taxAmount);
+
+  res.render('invoice', { order: order?.toJSON(), orderSubTotal: subTotal });
 };
 
 export { findAll, findOne, viewOrder };

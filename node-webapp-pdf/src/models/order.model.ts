@@ -129,6 +129,11 @@ const orderSchema = new Schema(
   },
 );
 
+orderSchema.methods.subTotal = function () {
+  // @ts-ignore
+  return this.totalAmount - (this.shippingAmount + this.taxAmount);
+};
+
 const Order: Model<OrderDocument> = mongoose.model('Order', orderSchema);
 
 export { Order, OrderDocument, OrderInput, OrderItemInput, PaymentModeEnum, OrderStatusEnum };
