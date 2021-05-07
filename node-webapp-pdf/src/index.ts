@@ -5,7 +5,7 @@ import expressHandlebars from 'express-handlebars';
 
 import { connectToDatabase } from './databaseConnection';
 import { loadDatabase } from './generateData';
-import {findAll, findOne, viewOrder} from './controllers/order.controller';
+import {downloadOrder, findAll, findOne, viewOrder} from './controllers/order.controller';
 import { Order } from './models/order.model';
 
 dotenv.config();
@@ -42,6 +42,7 @@ app.get('/', (req, res) => {
 app.get('/orders', findAll);
 app.get('/orders/:id', findOne);
 app.get('/orders/:id/view', viewOrder);
+app.get('/orders/:id/download', downloadOrder);
 
 app.use(express.static(path.resolve(__dirname, '../public')));
 

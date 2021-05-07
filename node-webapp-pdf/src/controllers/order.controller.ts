@@ -1,4 +1,6 @@
 import { Request, Response } from 'express';
+import puppeteer from 'puppeteer';
+import path from 'path';
 
 import { Order } from '../models/order.model';
 import { Address } from '../models/address.model';
@@ -29,4 +31,22 @@ const viewOrder = async (req: Request, res: Response) => {
   res.render('invoice', { order: order?.toJSON(), orderSubTotal: subTotal });
 };
 
-export { findAll, findOne, viewOrder };
+const downloadOrder = async (req: Request, res: Response) => {
+  const order = await Order.findOne({ _id: req.params.id });
+
+  const baseUrl = `${req.protocol}://${req.get('host')}`;
+  const url = `${baseUrl}/orders/${req.params.id}/view`;
+
+  const filePath = path.resolve(__dirname, `../../public/ORDER-${order?.reference}.pdf`);
+
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+
+  await page.goto(url);
+  await page.pdf({ path: filePath, format: 'a4', margin: { top: 0, bottom: 0, left: 0, right: 0 }, printBackground: true });
+  await browser.close();
+
+  res.download(filePath);
+};
+
+export { findAll, findOne, viewOrder, downloadOrder };
