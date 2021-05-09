@@ -82,7 +82,7 @@ const generateOrderItems = (count = 1): OrderItemInput[] => {
 };
 
 const generateOrder = (): OrderInput => {
-  const items = generateOrderItems();
+  const items = generateOrderItems(faker.random.arrayElement([1, 2, 3]));
   const subTotal = sum(items.map((item) => item.price * item.quantity));
   const taxAmount = subTotal * 0.2;
   const shippingAmount = faker.datatype.number({ min: 1000, max: 5000 });

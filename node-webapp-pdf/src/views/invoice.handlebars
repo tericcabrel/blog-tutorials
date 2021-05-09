@@ -13,11 +13,11 @@
         margin-bottom: 10px;
     }
     .container {
-        width: 800px;
+        width: 730px;
         margin: auto;
-        border: solid 2px #f5f5f5;
         min-height: 800px;
         padding: 15px;
+        height: 100vh;
     }
     .container .header {
         display: flex;
@@ -143,7 +143,7 @@
         {{#each order.items}}
         <div class="product-item">
             <div class="product-item-picture">
-                <img src="{{ this.productPicture }}" width="100" height="100" alt="product-picture" />
+                <img src="{{ this.productPicture }}" width="80" height="80" alt="product-picture" />
             </div>
             <div class="product-item-info">
                 <div class="product-item-info-name">{{ this.productName }}</div>

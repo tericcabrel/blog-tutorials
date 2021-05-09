@@ -43,7 +43,7 @@ const downloadOrder = async (req: Request, res: Response) => {
   const page = await browser.newPage();
 
   await page.goto(url);
-  await page.pdf({ path: filePath, format: 'a4', margin: { top: 0, bottom: 0, left: 0, right: 0 }, printBackground: true });
+  await page.pdf({ path: filePath, format: 'a4', printBackground: true });
   await browser.close();
 
   res.download(filePath);

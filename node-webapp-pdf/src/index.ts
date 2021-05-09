@@ -21,7 +21,7 @@ app.use(express.json());
 const hbs = expressHandlebars.create({
   helpers: {
     round: function (number) {
-      return number / 100;
+      return Math.round(number) / 100;
     },
     date: function (dateString) {
       const date = new Date(dateString);
