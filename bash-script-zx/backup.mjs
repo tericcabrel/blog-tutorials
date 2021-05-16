@@ -3,16 +3,17 @@
 $.verbose = false;
 
 // console.log(process.argv)
-const [, , , osPlatform, saveDirectory, dbHost, dbPort, dbUser, dbPassword, dbName ] = process.argv;
+const [, , , saveDirectory, dbHost, dbPort, dbUser, dbPassword, dbName ] = process.argv;
 
 let mysqlDumpLocation;
+const osPlatform = os.platform();
 
 if (osPlatform === "linux") {
     mysqlDumpLocation = "/bin:/usr/bin:/usr/local/bin";
-} else if (osPlatform === "macos") {
+} else if (osPlatform === "darwin") {
     mysqlDumpLocation = "/bin:/usr/bin:/usr/local/mysql/bin";
 } else {
-    console.log("Only Linux and MacOS are supported!");
+    console.log(chalk.red("Only Linux and MacOS are supported!"));
     process.exit(1);
 }
 
@@ -33,8 +34,8 @@ try {
    -p${dbPassword} \\
    ${dbName} | gzip > ${saveDirectory}/${dbName}-${today}.sql.gz`;
 
-    console.log("Database backup performed successfully!")
+    console.log(chalk.green("Database backup performed successfully!"))
 } catch (e) {
-    console.log("Fail to backup the database!");
+    console.log(chalk.red("Fail to backup the database!"));
     process.exit(1);
 }
