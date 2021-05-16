@@ -30,8 +30,8 @@ mysqldump -h ${MYSQL_HOST} \
    ${DATABASE_NAME} | gzip > ${DB_BACKUP_PATH}/${DATABASE_NAME}-${TODAY}.sql.gz
 
 if [ $? -eq 0 ]; then
-  echo "SUCCESS"
+  echo "Database backup performed successfully!"
 else
-  echo "ERROR"
+  echo "Fail to backup the database!"
   exit 1
 fi
