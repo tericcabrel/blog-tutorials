@@ -17,3 +17,7 @@
 [**Document a Node.js REST API with Swagger and Open API**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-rest-api-swagger)
 
 [**Using MongoDB with Spring Boot project - Part 1**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-mongodb)
+
+[**Generate a PDF in a Node.js application with Puppeteer**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-webapp-pdf)
+
+[**Write better bash scripts with Zx**](https://github.com/tericcabrel/blog-tutorials/tree/main/bash-script-zx)
