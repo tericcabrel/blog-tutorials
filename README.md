@@ -21,3 +21,5 @@
 [**Generate a PDF in a Node.js application with Puppeteer**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-webapp-pdf)
 
 [**Write better bash scripts with Zx**](https://github.com/tericcabrel/blog-tutorials/tree/main/bash-script-zx)
+
+[**Using MongoDB with Spring Boot project - Part 2**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-mongodb-2)
