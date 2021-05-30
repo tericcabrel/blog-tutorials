@@ -127,4 +127,23 @@ public class SoccerController {
 
     return new ResponseEntity<>(players, HttpStatus.OK);
   }
+
+  @GetMapping("/teams/{id}")
+  public ResponseEntity<Team> oneTeam(@PathVariable String id) {
+    Optional<Team> teamOptional = teamRepository.findById(id);
+
+    return teamOptional
+        .map(team -> new ResponseEntity<>(team, HttpStatus.OK))
+        .orElseGet(() -> ResponseEntity.notFound().build());
+  }
+
+  @GetMapping("/players/{id}")
+  public ResponseEntity<Player> onePlayer(@PathVariable String id) {
+    Optional<Player> playerOptional = playerRepository.findById(id);
+
+    return playerOptional
+        .map(player -> new ResponseEntity<>(player, HttpStatus.OK))
+        .orElseGet(() -> ResponseEntity.notFound().build());
+
+  }
 }
