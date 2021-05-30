@@ -12,4 +12,6 @@ public interface TeamRepository extends MongoRepository<Team, String> {
   List<Team> findByIdIsNotNullOrderByNameDesc();
 
   List<Team> findByNameContainingIgnoreCaseOrderByNameDesc(String nameKeyword);
+
+  List<Team> findByAddressCityIgnoreCase(String city);
 }
