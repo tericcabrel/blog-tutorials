@@ -180,13 +180,13 @@ public class SoccerController {
   public ResponseEntity<List<Player>> listPlayersExample4() {
     Calendar calendar = Calendar.getInstance();
 
-    calendar.set(1996, Calendar.JANUARY, 1);
+    calendar.set(1991, Calendar.JANUARY, 1);
     Date fromDate = calendar.getTime();
 
-    calendar.set(1991, Calendar.JANUARY, 1);
+    calendar.set(1996, Calendar.JANUARY, 1);
     Date toDate = calendar.getTime();
 
-    List<Player> players = playerRepository.findByBirthDateIsBetween(fromDate, toDate);
+    List<Player> players = playerRepository.findByBirthDateIsBetweenOrderByBirthDate(fromDate, toDate);
 
     return new ResponseEntity<>(players, HttpStatus.OK);
   }
@@ -196,5 +196,19 @@ public class SoccerController {
     Player player = playerRepository.findFirstByOrderByBirthDateDesc();
 
     return new ResponseEntity<>(player, HttpStatus.OK);
+  }
+
+  @GetMapping("/players-example6")
+  public ResponseEntity<List<Player>> listPlayersExample6() {
+    List<Player> players = playerRepository.findFirst10ByOrderByBirthDate();
+
+    return new ResponseEntity<>(players, HttpStatus.OK);
+  }
+
+  @GetMapping("/teams-example7/{city}")
+  public ResponseEntity<List<Team>> listTeamsExample7(@PathVariable String city) {
+    List<Team> teams = teamRepository.findByAddressCityIgnoreCase(city);
+
+    return new ResponseEntity<>(teams, HttpStatus.OK);
   }
 }
