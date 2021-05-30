@@ -23,4 +23,22 @@ public enum PlayerPosition {
   PlayerPosition(String position) {
     this.position = position;
   }
+
+  public static PlayerPosition[] toArray() {
+    return new PlayerPosition[] {
+        GOALKEEPER,
+        LEFT_FULLBACK,
+        RIGHT_FULLBACK,
+        CENTER_FULLBACK,
+        MIDFIELDER,
+        LEFT_MIDFIELDER,
+        RIGHT_MIDFIELDER,
+        DEFENSIVE_MIDFIELDER,
+        WINGER,
+        LEFT_WINGER,
+        RIGHT_WINGER,
+        STRIKER,
+        SECOND_STRIKER,
+    };
+  }
 }
