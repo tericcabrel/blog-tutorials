@@ -3,6 +3,7 @@ package com.soccer.mongo.controllers;
 import com.soccer.mongo.dtos.CreatePlayerDto;
 import com.soccer.mongo.dtos.CreateTeamDto;
 import com.soccer.mongo.models.Player;
+import com.soccer.mongo.models.PlayerPosition;
 import com.soccer.mongo.models.Team;
 import com.soccer.mongo.repositories.PlayerRepository;
 import com.soccer.mongo.repositories.TeamRepository;
@@ -145,5 +146,26 @@ public class SoccerController {
         .map(player -> new ResponseEntity<>(player, HttpStatus.OK))
         .orElseGet(() -> ResponseEntity.notFound().build());
 
+  }
+
+  @GetMapping("/players-list")
+  public ResponseEntity<List<Player>> listPlayers() {
+    // List<Player> players = playerRepository.findByPositionAndIsAvailable(PlayerPosition.STRIKER, true);
+
+    List<PlayerPosition> playerPositions = new ArrayList<>() {{
+      add(PlayerPosition.DEFENSIVE_MIDFIELDER);
+      add(PlayerPosition.GOALKEEPER);
+    }};
+
+    List<Player> players = playerRepository.findDistinctNameByPositionIn(playerPositions);
+
+    return new ResponseEntity<>(players, HttpStatus.OK);
+  }
+
+  @GetMapping("/teams-list")
+  public ResponseEntity<List<Team>> listTeams() {
+    List<Team> teams = teamRepository.findByNameContainingIgnoreCaseOrderByNameDesc("as");
+
+    return new ResponseEntity<>(teams, HttpStatus.OK);
   }
 }

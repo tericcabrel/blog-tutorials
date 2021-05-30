@@ -7,6 +7,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TeamRepository extends MongoRepository<Team, String> {
-  // List<Team> findByNameOrderByNameDesc();
+  List<Team> findByNameOrderByNameDesc();
+
   List<Team> findByIdIsNotNullOrderByNameDesc();
+
+  List<Team> findByNameContainingIgnoreCaseOrderByNameDesc(String nameKeyword);
 }
