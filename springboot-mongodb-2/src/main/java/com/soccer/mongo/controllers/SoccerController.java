@@ -8,6 +8,8 @@ import com.soccer.mongo.models.Team;
 import com.soccer.mongo.repositories.PlayerRepository;
 import com.soccer.mongo.repositories.TeamRepository;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -148,10 +150,22 @@ public class SoccerController {
 
   }
 
-  @GetMapping("/players-list")
-  public ResponseEntity<List<Player>> listPlayers() {
-    // List<Player> players = playerRepository.findByPositionAndIsAvailable(PlayerPosition.STRIKER, true);
+  @GetMapping("/players-example1")
+  public ResponseEntity<List<Player>> listPlayersExample() {
+    List<Player> players = playerRepository.findByPositionAndIsAvailable(PlayerPosition.STRIKER, true);
 
+    return new ResponseEntity<>(players, HttpStatus.OK);
+  }
+
+  @GetMapping("/teams-example2")
+  public ResponseEntity<List<Team>> listTeamsExample2() {
+    List<Team> teams = teamRepository.findByNameContainingIgnoreCaseOrderByNameDesc("as");
+
+    return new ResponseEntity<>(teams, HttpStatus.OK);
+  }
+
+  @GetMapping("/players-example3")
+  public ResponseEntity<List<Player>> listPlayersExample3() {
     List<PlayerPosition> playerPositions = new ArrayList<>() {{
       add(PlayerPosition.DEFENSIVE_MIDFIELDER);
       add(PlayerPosition.GOALKEEPER);
@@ -162,10 +176,25 @@ public class SoccerController {
     return new ResponseEntity<>(players, HttpStatus.OK);
   }
 
-  @GetMapping("/teams-list")
-  public ResponseEntity<List<Team>> listTeams() {
-    List<Team> teams = teamRepository.findByNameContainingIgnoreCaseOrderByNameDesc("as");
+  @GetMapping("/players-example4")
+  public ResponseEntity<List<Player>> listPlayersExample4() {
+    Calendar calendar = Calendar.getInstance();
 
-    return new ResponseEntity<>(teams, HttpStatus.OK);
+    calendar.set(1996, Calendar.JANUARY, 1);
+    Date fromDate = calendar.getTime();
+
+    calendar.set(1991, Calendar.JANUARY, 1);
+    Date toDate = calendar.getTime();
+
+    List<Player> players = playerRepository.findByBirthDateIsBetween(fromDate, toDate);
+
+    return new ResponseEntity<>(players, HttpStatus.OK);
+  }
+
+  @GetMapping("/players-example5")
+  public ResponseEntity<Player> listPlayersExample5() {
+    Player player = playerRepository.findFirstByOrderByBirthDateDesc();
+
+    return new ResponseEntity<>(player, HttpStatus.OK);
   }
 }
