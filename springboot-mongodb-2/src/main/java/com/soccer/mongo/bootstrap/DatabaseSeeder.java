@@ -32,24 +32,28 @@ public class DatabaseSeeder implements ApplicationListener<ContextRefreshedEvent
 
   @Override
   public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-    teamRepository.deleteAll();
+    /*teamRepository.deleteAll();
     playerRepository.deleteAll();
 
     Set<String> teamNames = new HashSet<>();
+    Set<String> teamAcronyms = new HashSet<>();
     int counter = 0;
 
     while (counter < 10) {
       String teamName = faker.team().name();
+      String teamAcronym = teamName.replaceAll(" ", "").toUpperCase().substring(0, 4);
 
-      if (!teamNames.contains(teamName)) {
+      if (!teamNames.contains(teamName) && !teamAcronyms.contains(teamAcronym)) {
         teamNames.add(teamName);
+        teamAcronyms.add(teamAcronym);
+
         counter++;
       }
     }
 
     for(String teamName: teamNames) {
       createAndPersistTeam(teamName);
-    }
+    }*/
   }
 
   private void createAndPersistTeam(String teamName) {
