@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.domain.Sort.Order;
@@ -25,6 +27,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -210,5 +213,12 @@ public class SoccerController {
     List<Team> teams = teamRepository.findByAddressCityIgnoreCase(city);
 
     return new ResponseEntity<>(teams, HttpStatus.OK);
+  }
+
+  @GetMapping("/players-page")
+  public ResponseEntity<Page<Player>> listPlayersPage(@RequestParam int page) {
+    Page<Player> players = playerRepository.findByIdIsNotNull(PageRequest.of(page - 1, 10));
+
+    return new ResponseEntity<>(players, HttpStatus.OK);
   }
 }
