@@ -22,4 +22,14 @@ nano .env
 ```bash
 yarn start
 ```
+
 The application will be launched by [Nodemon](https://nodemon.com). It will restart automatically on file change
+
+
+- Run the application with Docker
+```bash
+docker-compose build
+
+docker-compose up
+```
+
