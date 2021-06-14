@@ -23,3 +23,5 @@
 [**Write better bash scripts with Zx**](https://github.com/tericcabrel/blog-tutorials/tree/main/bash-script-zx)
 
 [**Using MongoDB with Spring Boot project - Part 2**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-mongodb-2)
+
+[**Using Docker and Docker-compose with Node.js and MongoDB**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-docker-compose)
