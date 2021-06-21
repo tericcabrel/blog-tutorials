@@ -28,13 +28,13 @@ public class ReservationServiceTest {
 
   @Test
   public void testGenerateFirstCode() {
-    given(reservationRepository.findFirstOrderByIdDesc()).willReturn(Optional.empty());
+    given(reservationRepository.findFirstByOrderByIdDesc()).willReturn(Optional.empty());
     given(reservationRepository.save(ArgumentMatchers.any(Reservation.class))).willReturn(new Reservation().setId(1));
 
     ArgumentCaptor<Reservation> reservationToCreateCaptor = ArgumentCaptor.forClass(Reservation.class);
     reservationService.create(new Reservation());
 
-    verify(reservationRepository).findFirstOrderByIdDesc();
+    verify(reservationRepository).findFirstByOrderByIdDesc();
     verify(reservationRepository).save(reservationToCreateCaptor.capture());
 
     String generatedCodeExpected = "RSV-" + Calendar.getInstance().get(Calendar.YEAR) + "-1001";
@@ -46,13 +46,13 @@ public class ReservationServiceTest {
   public void testGenerateCode() {
     Reservation mostRecentReservation = new Reservation().setId(1234).setCode("RSV-2021-1234");
 
-    given(reservationRepository.findFirstOrderByIdDesc()).willReturn(Optional.of(mostRecentReservation));
+    given(reservationRepository.findFirstByOrderByIdDesc()).willReturn(Optional.of(mostRecentReservation));
     given(reservationRepository.save(ArgumentMatchers.any(Reservation.class))).willReturn(new Reservation().setId(1235));
 
     ArgumentCaptor<Reservation> reservationToCreateCaptor = ArgumentCaptor.forClass(Reservation.class);
     reservationService.create(new Reservation());
 
-    verify(reservationRepository).findFirstOrderByIdDesc();
+    verify(reservationRepository).findFirstByOrderByIdDesc();
     verify(reservationRepository).save(reservationToCreateCaptor.capture());
 
     String generatedCodeExpected = "RSV-" + Calendar.getInstance().get(Calendar.YEAR) + "-1235";
