@@ -19,7 +19,7 @@ public class ReservationServiceImpl implements ReservationService {
   }
 
   private String generateCode() {
-    Optional<Reservation> reservation = reservationRepository.findFirstOrderByIdDesc();
+    Optional<Reservation> reservation = reservationRepository.findFirstByOrderByIdDesc();
 
     int lastId = reservation.map(Reservation::getId).orElse(1000);
 

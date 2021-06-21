@@ -2,7 +2,6 @@ package com.tericcabrel.hotel.models.dtos;
 
 import com.tericcabrel.hotel.models.Address;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Null;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Pattern.Flag;
 import lombok.Data;
@@ -15,13 +14,13 @@ public class AddressDto {
   @NotBlank(message = "The city is required.")
   private String city;
 
-  @Pattern(regexp = "^\\d{1,5}$", flags = { Flag.CASE_INSENSITIVE, Flag.MULTILINE }, message = "The ZIP code is invalid.")
+  @NotBlank(message = "The Zip code is required.")
+  @Pattern(regexp = "^\\d{1,5}$", flags = { Flag.CASE_INSENSITIVE, Flag.MULTILINE }, message = "The Zip code is invalid.")
   private String zipCode;
 
-  @NotBlank(message = "The street is required.")
+  @NotBlank(message = "The street name is required.")
   private String street;
 
-  @Null
   private String state;
 
   public Address toAddress() {

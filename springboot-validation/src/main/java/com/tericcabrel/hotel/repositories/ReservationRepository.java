@@ -7,7 +7,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ReservationRepository extends CrudRepository<Reservation, Integer> {
-  Optional<Reservation> findFirstOrderByIdDesc();
+  Optional<Reservation> findFirstByOrderByIdDesc();
 
   Optional<Reservation> findByCode(String code);
 }
+
