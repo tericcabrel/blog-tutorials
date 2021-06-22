@@ -1,12 +1,15 @@
 package com.tericcabrel.hotel.models;
 
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -37,6 +40,10 @@ public class Reservation {
 
   @Column(nullable = false)
   private String[] extras;
+
+  @ManyToOne(targetEntity = User.class, cascade = CascadeType.REMOVE)
+  @JoinColumn(name = "user_id", nullable = false, referencedColumnName = "id")
+  private User user;
 
   @Lob
   @Column
