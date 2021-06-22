@@ -2,6 +2,7 @@ package com.tericcabrel.hotel.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,6 +34,6 @@ public class Address {
 
   private String state;
 
-  @OneToOne(mappedBy = "address")
+  @OneToOne(mappedBy = "address", fetch = FetchType.LAZY)
   private User user;
 }

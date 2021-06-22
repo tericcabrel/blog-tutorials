@@ -1,8 +1,8 @@
 package com.tericcabrel.hotel.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -51,5 +51,6 @@ public class User {
   private Address address;
 
   @OneToMany(targetEntity = Reservation.class, mappedBy = "user")
+  @JsonManagedReference(value = "user-reservations")
   private List<Reservation> reservations;
 }
