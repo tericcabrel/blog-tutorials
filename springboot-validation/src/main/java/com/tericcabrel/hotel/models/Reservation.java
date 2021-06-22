@@ -1,5 +1,6 @@
 package com.tericcabrel.hotel.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -43,6 +44,7 @@ public class Reservation {
 
   @ManyToOne(targetEntity = User.class, cascade = CascadeType.REMOVE)
   @JoinColumn(name = "user_id", nullable = false, referencedColumnName = "id")
+  @JsonBackReference(value = "user-reservations")
   private User user;
 
   @Lob
