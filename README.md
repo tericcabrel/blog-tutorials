@@ -25,3 +25,5 @@
 [**Using MongoDB with Spring Boot project - Part 2**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-mongodb-2)
 
 [**Using Docker and Docker-compose with Node.js and MongoDB**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-docker-compose)
+
+[**Validate Request Body and Parameter in Spring Boot**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-validation)
