@@ -55,7 +55,7 @@ public class ReservationServiceTest {
     verify(reservationRepository).findFirstByOrderByIdDesc();
     verify(reservationRepository).save(reservationToCreateCaptor.capture());
 
-    String generatedCodeExpected = "RSV-" + Calendar.getInstance().get(Calendar.YEAR) + "-1235";
+    String generatedCodeExpected = "RSV-" + Calendar.getInstance().get(Calendar.YEAR) + "-2235";
 
     assertThat(reservationToCreateCaptor.getValue().getCode()).isEqualTo(generatedCodeExpected);
   }
