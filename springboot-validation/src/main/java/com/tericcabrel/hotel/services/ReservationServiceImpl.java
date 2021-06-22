@@ -21,9 +21,9 @@ public class ReservationServiceImpl implements ReservationService {
   private String generateCode() {
     Optional<Reservation> reservation = reservationRepository.findFirstByOrderByIdDesc();
 
-    int lastId = reservation.map(Reservation::getId).orElse(1000);
+    int lastId = reservation.map(Reservation::getId).orElse(0);
 
-    return "RSV-" + Calendar.getInstance().get(Calendar.YEAR) + "-" + (lastId + 1);
+    return "RSV-" + Calendar.getInstance().get(Calendar.YEAR) + "-" + (1000 + lastId + 1);
   }
 
   @Override
