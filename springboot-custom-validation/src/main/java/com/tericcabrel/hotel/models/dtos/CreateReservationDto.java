@@ -1,5 +1,6 @@
 package com.tericcabrel.hotel.models.dtos;
 
+import com.tericcabrel.hotel.constraints.CompareDate;
 import com.tericcabrel.hotel.models.Reservation;
 import java.util.Date;
 import javax.validation.constraints.FutureOrPresent;
@@ -11,6 +12,7 @@ import javax.validation.constraints.Positive;
 import lombok.Data;
 
 @Data
+@CompareDate(before = "arrivalDate", after = "departureDate", message = "The arrival date must be lower than the departure date")
 public class CreateReservationDto {
   @NotNull(message = "The number of bags is required.")
   @Min(value = 1, message = "The number of bags must be greater than 0")

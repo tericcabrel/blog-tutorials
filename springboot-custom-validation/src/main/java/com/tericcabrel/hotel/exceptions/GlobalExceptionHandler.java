@@ -26,7 +26,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     Map<String, List<String>> body = new HashMap<>();
 
     List<String> errors = ex.getBindingResult()
-        .getFieldErrors()
+        .getAllErrors()
         .stream()
         .map(DefaultMessageSourceResolvable::getDefaultMessage)
         .collect(Collectors.toList());
