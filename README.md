@@ -27,3 +27,5 @@
 [**Using Docker and Docker-compose with Node.js and MongoDB**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-docker-compose)
 
 [**Validate Request Body and Parameter in Spring Boot**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-validation)
+
+[**Write custom validator for request body in Spring Boot**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-custom-validation)
