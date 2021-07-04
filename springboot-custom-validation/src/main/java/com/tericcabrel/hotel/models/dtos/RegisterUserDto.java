@@ -1,5 +1,6 @@
 package com.tericcabrel.hotel.models.dtos;
 
+import com.tericcabrel.hotel.constraints.BirthDate;
 import com.tericcabrel.hotel.models.User;
 import java.util.Date;
 import javax.validation.Valid;
@@ -22,6 +23,7 @@ public class RegisterUserDto {
   private String email;
 
   @NotNull(message = "The date of birth is required.")
+  @BirthDate(message = "The birth date must be greater or equal than 18")
   @Past(message = "The date of birth must be in the past.")
   private Date dateOfBirth;
 
