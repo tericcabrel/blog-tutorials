@@ -29,3 +29,5 @@
 [**Validate Request Body and Parameter in Spring Boot**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-validation)
 
 [**Write custom validator for request body in Spring Boot**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-custom-validation)
+
+[**Using Web scraping in Node.js to build an API to browse programming languages**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-web-scraping)
