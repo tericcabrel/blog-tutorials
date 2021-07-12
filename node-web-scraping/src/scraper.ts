@@ -1,5 +1,7 @@
 import axios from 'axios';
 import * as cheerio from 'cheerio';
+import { Language } from './models/language';
+import { connectToDatabase } from './databaseConnection';
 
 const PAGE_URL = 'https://en.wikipedia.org/wiki/Timeline_of_programming_languages';
 
@@ -72,7 +74,19 @@ const scraper = async () => {
 
   const languages = retrieveData(response.data);
 
-  console.log(languages);
+  await connectToDatabase();
+
+  const insertPromises = languages.map(async (language) => {
+    const isPresent = await Language.exists({ name: language.name });
+
+    if (!isPresent) {
+      await Language.create(language);
+    }
+  });
+
+  await Promise.all(insertPromises);
+
+  console.log('Data inserted successfully!');
 };
 
 (async () => {
