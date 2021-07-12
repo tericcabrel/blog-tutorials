@@ -1,6 +1,6 @@
-# Node Typescript Starter
+# Node Web Scraping
 
-This project contains a minimal starter for Node.js project with Typescript, ESLint and Prettier already configured
+This project shows how to scrape data from a website, store these data retrieved in the database then create and endpoint to expose them to the world.
 
 ## Prerequisites
 - Node.js 10+
@@ -18,8 +18,15 @@ cp .env.example .env
 nano .env
 ```
 
+- Scrape programming languages from Wikipedia page
+```bash
+yarn scrape
+```
+
 - Start Application
 ```bash
 yarn start
 ```
+Browse `http://localhost:4500/languages` to view languages retrieved by the scraper.
+
 The application will be launched by [Nodemon](https://nodemon.com). It will restart automatically on file change
