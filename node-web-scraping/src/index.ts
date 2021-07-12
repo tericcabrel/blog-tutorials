@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import { connectToDatabase } from './databaseConnection';
+import { Language } from './models/language';
 
 dotenv.config();
 
@@ -14,6 +15,12 @@ app.use(express.json());
 
 app.get('/', (req, res) => {
   return res.json({ message: 'Hello World!' });
+});
+
+app.get('/languages', async (req, res) => {
+  const languages = await Language.find().sort({ name: 1 }).exec();
+
+  return res.json({ data: languages });
 });
 
 app.listen(PORT, async () => {
