@@ -5,6 +5,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "scrape": "ts-node ./src/scraper.ts",
     "start": "nodemon --watch \"*.ts\" --exec \"ts-node\" ./src/index.ts",
     "eslint:fix": "eslint --fix"
   },
