@@ -9,3 +9,21 @@ datasource db {
 generator client {
   provider = "prisma-client-js"
 }
+
+model Category {
+  id        Int       @id @default(autoincrement())
+  name      String    @db.VarChar(150) @unique
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+
+  @@map("categories")
+}
+
+model Tag {
+  id        Int       @id @default(autoincrement())
+  name      String    @db.VarChar(150) @unique
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+
+  @@map("tags")
+}
