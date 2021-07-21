@@ -20,7 +20,9 @@ async function main() {
       id: 2,
     },
     data: {
-      viewCount: 20,
+      viewCount: {
+        increment: 1, // increment by one the current value of viewCount
+      },
       isAvailable: true,
       visibility: 'DEAL',
     },
