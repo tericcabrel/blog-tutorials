@@ -31,3 +31,5 @@
 [**Write custom validator for request body in Spring Boot**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-custom-validation)
 
 [**Using Web scraping in Node.js to build an API to browse programming languages**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-web-scraping)
+
+[**Using Prisma ORM to build a Node.js application with MySQL**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-prisma-mysql)
