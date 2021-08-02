@@ -33,3 +33,5 @@
 [**Using Web scraping in Node.js to build an API to browse programming languages**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-web-scraping)
 
 [**Using Prisma ORM to build a Node.js application with MySQL**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-prisma-mysql)
+
+[**Send email in Spring Boot with Thymeleaf and Mailgun**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-email)
