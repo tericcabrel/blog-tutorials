@@ -35,3 +35,7 @@
 [**Using Prisma ORM to build a Node.js application with MySQL**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-prisma-mysql)
 
 [**Send email in Spring Boot with Thymeleaf and Mailgun**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-email)
+
+[**Setup ZSH, autosuggestion, and syntax highlight on Ubuntu Server**](https://blog.tericcabrel.com/setup-zsh-autosuggestion-and-syntax-highlight-on-ubuntu-server/)
+
+[**Set up a personal blog with Ghost and Docker**](https://github.com/tericcabrel/blog-tutorials/tree/main/blog-ghost-docker)
