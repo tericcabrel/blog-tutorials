@@ -1,0 +1,13 @@
+{
+  "name": "lambda-container-backup",
+  "version": "1.0.0",
+  "description": "back up database with lambda container",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "aws-lambda-ric": "^1.1.0"
+  }
+}
