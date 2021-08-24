@@ -39,3 +39,5 @@
 [**Setup ZSH, autosuggestion, and syntax highlight on Ubuntu Server**](https://blog.tericcabrel.com/setup-zsh-autosuggestion-and-syntax-highlight-on-ubuntu-server/)
 
 [**Set up a personal blog with Ghost and Docker**](https://github.com/tericcabrel/blog-tutorials/tree/main/blog-ghost-docker)
+
+[**Backup a database using AWS Lambda container**](https://github.com/tericcabrel/blog-tutorials/tree/main/lambda-container-backup-db)
