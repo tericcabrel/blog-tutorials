@@ -1,9 +1,10 @@
-const addition = (a: number, b: number) => {
-  return a + b;
-};
+import { ApolloServer } from 'apollo-server';
+import resolvers from './resolvers';
+import typeDefs from './schema';
 
-const number1 = 5;
-const number2 = 10;
-const result = addition(number1, number2);
+// @ts-ignore
+const server = new ApolloServer({ typeDefs, resolvers, introspection: true });
 
-console.log('The result is %d', result);
+server.listen().then(({ url }) => {
+  console.log(`🚀  Server ready at ${url}graphql`);
+});
