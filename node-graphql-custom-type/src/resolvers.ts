@@ -1,8 +1,9 @@
 import { CreateUserInput, MutationResolvers, QueryResolvers, Resolvers } from './types/types';
 import datasource from './datasource';
+import { dateTimeScalar } from './types/datetime';
 
 const createUser: MutationResolvers['registerUser'] = (parent, args) => {
-  const { email, firstName, lastName, password }: CreateUserInput = args.input;
+  const { createdAt, email, firstName, lastName, password }: CreateUserInput = args.input;
 
   const user = {
     email,
@@ -10,7 +11,10 @@ const createUser: MutationResolvers['registerUser'] = (parent, args) => {
     id: `${datasource.length + 1}`,
     lastName,
     password,
+    createdAt,
   };
+
+  console.log('timestamp => ', createdAt.getTime());
 
   datasource.push(user);
 
@@ -22,6 +26,7 @@ const findAllUsers: QueryResolvers['users'] = () => {
 };
 
 const resolvers: Resolvers = {
+  DateTime: dateTimeScalar,
   Mutation: {
     registerUser: createUser,
   },
