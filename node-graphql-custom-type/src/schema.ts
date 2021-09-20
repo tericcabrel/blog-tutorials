@@ -1,12 +1,15 @@
 import { gql } from 'apollo-server';
 
 const typeDefs = gql`
+  scalar DateTime
+
   type User {
     id: ID!
     firstName: String!
     lastName: String!
     email: String!
     password: String!
+    createdAt: DateTime!
   }
 
   input CreateUserInput {
@@ -14,6 +17,7 @@ const typeDefs = gql`
     lastName: String!
     email: String!
     password: String!
+    createdAt: DateTime!
   }
 
   type Mutation {

@@ -6,3 +6,6 @@ generates:
     plugins:
       - "typescript"
       - "typescript-resolvers"
+    config:
+      scalars:
+        DateTime: Date

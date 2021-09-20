@@ -1,17 +1,15 @@
-import { GraphQLScalarType, Kind } from 'graphql';
+import { GraphQLScalarType } from 'graphql';
+
+const naiveIsoDateRegex = /(\d{4})-(\d{2})-(\d{2})T((\d{2}):(\d{2}):(\d{2}))\.(\d{3})Z/;
 
 export const dateTimeScalar = new GraphQLScalarType({
   name: 'DateTime',
   description: 'Data type representing the date and time',
-  parseLiteral: (valueNode) => {
-    if (valueNode.kind === Kind.STRING) {
-      if (valueNode.value.length < 10) {
-        throw new Error('Invalid date format');
-      }
-    }
-    return null;
-  },
   parseValue: (value) => {
+    if (!naiveIsoDateRegex.test(value)) {
+      throw new Error('Invalid date format');
+    }
+
     return new Date(value);
   },
   serialize: (value: Date) => {
