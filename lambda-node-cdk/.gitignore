@@ -7,3 +7,4 @@ node_modules
 .cdk.staging
 cdk.out
 !src/*.js
+.aws-sam
