@@ -47,3 +47,5 @@
 [**Handle custom datatype in a GraphQL application with Node.js**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-graphql-custom-type)
 
 [**Create and deploy a Lambda Function in Node.js with AWS CDK**](https://github.com/tericcabrel/blog-tutorials/tree/main/lambda-node-cdk)
+
+[**Set up a React project with Typescript, Hot reload and Webpack**](https://github.com/tericcabrel/blog-tutorials/tree/main/react-webpack)
