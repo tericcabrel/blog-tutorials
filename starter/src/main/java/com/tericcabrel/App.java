@@ -1,13 +1,15 @@
 package com.tericcabrel;
 
-/**
- * Hello world!
- *
- */
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+
+
 public class App 
 {
+    static Logger logger = LoggerFactory.getLogger(App.class);
+
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        logger.info("Hello world!");
     }
 }
