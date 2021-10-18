@@ -51,3 +51,5 @@
 [**Set up a React project with Typescript, Hot reload and Webpack**](https://github.com/tericcabrel/blog-tutorials/tree/main/react-webpack)
 
 [**Create a Java project using an external dependency with Maven**](https://github.com/tericcabrel/blog-tutorials/tree/main/java-maven)
+
+[**Deploy a Node.js application with PM2 and Nginx**](https://github.com/tericcabrel/blog-tutorials/tree/main/deploy-node-app)
