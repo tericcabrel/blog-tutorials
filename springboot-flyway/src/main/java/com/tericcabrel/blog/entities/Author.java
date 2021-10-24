@@ -12,9 +12,9 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Data
-@Table(name = "users")
+@Table(name = "authors")
 @Entity
-public class User {
+public class Author {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Column(name = "id", nullable = false)
@@ -22,9 +22,6 @@ public class User {
 
   @Column(unique = true, length = 100, nullable = false)
   private String name;
-
-  @Column(unique = true, length = 100, nullable = false)
-  private String email;
 
   @Column(length = 100, nullable = false)
   private String password;

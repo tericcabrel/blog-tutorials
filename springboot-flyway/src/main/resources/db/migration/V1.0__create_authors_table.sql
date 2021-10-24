@@ -1,4 +1,4 @@
-CREATE TABLE users
+CREATE TABLE authors
 (
     id         BIGINT            NOT NULL AUTO_INCREMENT,
     name       VARCHAR(100)      NOT NULL,
@@ -6,8 +6,7 @@ CREATE TABLE users
     enabled    TINYINT DEFAULT 0 NOT NULL,
     created_at datetime          NULL,
     updated_at datetime          NULL,
-    CONSTRAINT pk_users PRIMARY KEY (id)
+    CONSTRAINT pk_authors PRIMARY KEY (id)
 );
 
-ALTER TABLE users
-    ADD CONSTRAINT uc_users_name UNIQUE (name);
+ALTER TABLE authors ADD CONSTRAINT uc_authors_name UNIQUE (name);
