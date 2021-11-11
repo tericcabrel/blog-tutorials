@@ -55,3 +55,5 @@
 [**Deploy a Node.js application with PM2 and Nginx**](https://github.com/tericcabrel/blog-tutorials/tree/main/deploy-node-app)
 
 [**Handle database migrations in a SpringBoot application with Flyway**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-flyway)
+
+[**Create a replica set in MongoDB with Docker Compose**](https://github.com/tericcabrel/blog-tutorials/tree/main/mongodb-replica-set)
