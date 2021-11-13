@@ -41,4 +41,6 @@ services:
 
 networks:
   mongors-network:
-    driver: bridge
+    external: true
+#    driver: overlay
+#    attachable: true
