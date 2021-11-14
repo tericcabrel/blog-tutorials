@@ -18,7 +18,7 @@ type OrderDocument = Document & {
   status: OrderStatusEnum;
   amount: number;
   vat: number;
-  user: Schema.Types.ObjectId;
+  user: mongoose.Types.ObjectId;
   payment: {
     reference: string;
     status: PaymentStatusEnum;
