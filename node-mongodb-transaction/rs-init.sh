@@ -23,5 +23,8 @@ var config = {
     ]
 };
 rs.initiate(config, { force: true });
-rs.status();
+rs.reconfig(config, { force: true });
+rs.secondaryOk();
+db.getMongo().setReadPref('secondary');
+db.getMongo().setSecondaryOk();
 EOF
