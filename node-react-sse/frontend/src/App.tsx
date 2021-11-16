@@ -16,7 +16,6 @@ const App = () => {
     });
 
     source.addEventListener('message', (e) => {
-      console.log(e.data);
       const data: Donation = JSON.parse(e.data);
 
       setDonation(data);
