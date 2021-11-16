@@ -57,3 +57,5 @@
 [**Handle database migrations in a SpringBoot application with Flyway**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-flyway)
 
 [**Create a replica set in MongoDB with Docker Compose**](https://github.com/tericcabrel/blog-tutorials/tree/main/mongodb-replica-set)
+
+[**Implement Server-Sent Events in Node.js**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-react-sse)
