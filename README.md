@@ -59,3 +59,5 @@
 [**Create a replica set in MongoDB with Docker Compose**](https://github.com/tericcabrel/blog-tutorials/tree/main/mongodb-replica-set)
 
 [**Implement Server-Sent Events in Node.js**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-react-sse)
+
+[**Handle MongoDB transactions in Node.js using Mongoose**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-mongodb-transaction)
