@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "@aws-cdk/assertions": "1.134.0",
+    "@types/aws-lambda": "^8.10.85",
     "@types/jest": "^26.0.10",
     "@types/node": "10.17.27",
     "aws-cdk": "1.134.0",
@@ -25,6 +26,11 @@
     "@aws-cdk/aws-sns": "1.134.0",
     "@aws-cdk/aws-sns-subscriptions": "1.134.0",
     "@aws-cdk/aws-sqs": "1.134.0",
-    "@aws-cdk/core": "1.134.0"
+    "@aws-cdk/core": "1.134.0",
+    "@vvo/tzdb": "^6.34.0",
+    "add": "^2.0.6",
+    "date-fns": "^2.27.0",
+    "date-fns-tz": "^1.1.6",
+    "yarn": "^1.22.17"
   }
 }
