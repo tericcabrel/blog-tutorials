@@ -3,7 +3,7 @@ import { getTimeZones } from "@vvo/tzdb";
 import { utcToZonedTime, format } from 'date-fns-tz';
 
 export const handler: APIGatewayProxyHandler = async (event) => {
-  const country = 'France'
+  const country = 'United States'
 
   const timeZone = getTimeZones().find((timeZone) => timeZone.countryName === country);
 
