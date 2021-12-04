@@ -11,7 +11,17 @@ export class NodeLambdaTimeviewerStack extends cdk.Stack {
       functionName: 'timeViewer',
       handler: 'handler',
       memorySize: 512,
-      timeout: cdk.Duration.seconds(10)
+      timeout: cdk.Duration.seconds(10),
+      bundling: {
+        minify: true, // minify code, defaults to false
+        sourceMap: true, // include source map, defaults to false
+        sourceMapMode: lambda.SourceMapMode.INLINE, // defaults to SourceMapMode.DEFAULT
+        sourcesContent: false, // do not include original source into source map, defaults to true
+        target: 'es2020', // target environment for the generated JavaScript code
+        define: { // Replace strings during build time
+          'process.env.COUNTRY': JSON.stringify('France'),
+        },
+      }
     });
   }
 }
