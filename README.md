@@ -61,3 +61,5 @@
 [**Implement Server-Sent Events in Node.js**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-react-sse)
 
 [**Handle MongoDB transactions in Node.js using Mongoose**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-mongodb-transaction)
+
+[**Using Typescript and Esbuild to deploy a Lambda Function with AWS CDK**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-lambda-timeviewer)
