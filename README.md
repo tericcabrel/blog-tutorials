@@ -63,3 +63,5 @@
 [**Handle MongoDB transactions in Node.js using Mongoose**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-mongodb-transaction)
 
 [**Using Typescript and Esbuild to deploy a Lambda Function with AWS CDK**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-lambda-timeviewer)
+
+[**Discover ULID: the sortable version of UUID**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-ulid)
