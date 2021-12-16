@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import neatCsv from 'neat-csv';
+import { parse } from 'csv-parse';
 
 type WorldCity = {
   name: string;
@@ -9,26 +9,26 @@ type WorldCity = {
   geoNameId: number;
 };
 
-const readFile = async (filePath: string): Promise<WorldCity[]> => {
-  const headers = ['name', 'country', 'subCountry', 'geoNameId'];
-
-  const fileContent = fs.readFileSync(filePath, { encoding: 'utf-8' });
-  // const finalContent = removeEmptyLines(originalContent, headers.length);
-
-  return (await neatCsv(fileContent, {
-    headers,
-    skipLines: 1,
-    separator: ';',
-    strict: true,
-    // mapValues: ({ header, value }) => transformValue(header, value),
-  })) as WorldCity[];
-};
-
-
-(async () => {
+(() => {
   const csvFilePath = path.resolve(__dirname, 'files/world-cities_csv.csv');
 
-  const result = await readFile(csvFilePath);
+  const headers = ['name', 'country', 'subCountry', 'geoNameId'];
 
-  console.log(result);
+  const fileContent = fs.readFileSync(csvFilePath, { encoding: 'utf-8' });
+  // const finalContent = removeEmptyLines(originalContent, headers.length);
+
+  parse(fileContent, {
+    delimiter: ',',
+    columns: headers,
+    // skipLines: 1,
+    // separator: ';',
+    // strict: true,
+    // mapValues: ({ header, value }) => transformValue(header, value),
+  }, (error, result: WorldCity[]) => {
+    if (error) {
+      console.error(error);
+    }
+
+    console.log("Result", result);
+  });
 })();
