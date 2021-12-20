@@ -15,15 +15,25 @@ type WorldCity = {
   const headers = ['name', 'country', 'subCountry', 'geoNameId'];
 
   const fileContent = fs.readFileSync(csvFilePath, { encoding: 'utf-8' });
-  // const finalContent = removeEmptyLines(originalContent, headers.length);
 
   parse(fileContent, {
     delimiter: ',',
     columns: headers,
-    // skipLines: 1,
-    // separator: ';',
-    // strict: true,
-    // mapValues: ({ header, value }) => transformValue(header, value),
+    fromLine: 2,
+    cast: (columnValue, context) => {
+      if (context.column === 'geoNameId') {
+        return parseInt(columnValue, 10);
+      }
+
+      return columnValue;
+    },
+    on_record: (line, context) => {
+      if (line.country !== 'France') {
+        return;
+      }
+
+      return line;
+    },
   }, (error, result: WorldCity[]) => {
     if (error) {
       console.error(error);
