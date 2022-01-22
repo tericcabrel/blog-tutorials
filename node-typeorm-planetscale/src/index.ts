@@ -1,21 +1,42 @@
 import "reflect-metadata";
-import {createConnection} from "typeorm";
-import {Task} from "./entity/Task";
+import express from "express";
+import http from "http";
+import { createConnection } from "typeorm";
+import {
+    createTask,
+    deleteTask,
+    retrieveAllTasks,
+    retrieveTask,
+    updateTask
+} from "./controller/task.controller";
 
-createConnection().then(async connection => {
+const SERVER_PORT = 8100;
 
-    console.log("Inserting a new user into the database...");
-    const user = new Task();
-    user.firstName = "Timber";
-    user.lastName = "Saw";
-    user.age = 25;
-    await connection.manager.save(user);
-    console.log("Saved a new user with id: " + user.id);
+const app = express();
+const router = express.Router();
 
-    console.log("Loading users from the database...");
-    const users = await connection.manager.find(Task);
-    console.log("Loaded users: ", users);
+// Express middleware
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-    console.log("Here you can setup and run express/koa/any other framework.");
+router.post('/tasks', createTask);
+router.patch('/tasks/:id', updateTask);
+router.delete('/tasks/:id', deleteTask);
+router.get('/tasks/:id', retrieveTask);
+router.get('/tasks', retrieveAllTasks);
 
-}).catch(error => console.log(error));
+app.use('/', router);
+
+const server = http.createServer(app);
+
+server.listen(SERVER_PORT, async () => {
+    // Connect to database
+    try {
+        await createConnection();
+    } catch (err) {
+        console.error(err);
+        process.exit(1);
+    }
+
+    console.info(`Server started at the port ${SERVER_PORT}`);
+});

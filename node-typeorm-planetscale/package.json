@@ -3,12 +3,14 @@
    "version": "0.0.1",
    "description": "Awesome project developed with TypeORM.",
    "devDependencies": {
+      "@types/cors": "^2.8.12",
       "@types/express": "^4.17.13",
-      "@types/node": "^8.0.29",
+      "@types/node": "^17.0.10",
       "ts-node": "3.3.0",
       "typescript": "3.3.3333"
    },
    "dependencies": {
+      "cors": "^2.8.5",
       "express": "^4.17.2",
       "mysql": "^2.14.1",
       "reflect-metadata": "^0.1.10",
