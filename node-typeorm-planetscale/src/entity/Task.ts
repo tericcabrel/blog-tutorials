@@ -7,10 +7,10 @@ import {
     Index
 } from "typeorm";
 
-enum TaskStatus {
+export enum TaskStatus {
     PENDING = "pending",
     IN_PROGRESS = "in_progress",
-    DONE = "DONE"
+    DONE = "done"
 }
 
 @Entity({ name: "tasks" })
