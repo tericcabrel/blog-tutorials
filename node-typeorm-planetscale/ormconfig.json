@@ -1,10 +1,10 @@
 {
    "type": "mysql",
    "host": "localhost",
-   "port": 3306,
-   "username": "test",
-   "password": "test",
-   "database": "test",
+   "port": 3308,
+   "username": "root",
+   "password": "",
+   "database": "task-manager-db",
    "synchronize": true,
    "logging": false,
    "entities": [
