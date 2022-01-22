@@ -67,3 +67,5 @@
 [**Discover ULID: the sortable version of UUID**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-ulid)
 
 [**Read CSV file in Node.js and Typescript**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-csv-read)
+
+[**Using PlanetScale and TypeORM to build a Node.js REST API**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-typeorm-planetscale)
