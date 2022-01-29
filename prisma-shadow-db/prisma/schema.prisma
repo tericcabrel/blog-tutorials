@@ -6,6 +6,25 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider            = "mysql"
+  url                 = env("DATABASE_URL")
+  shadowDatabaseUrl   = env("SHADOW_DATABASE_URL")
+}
+
+enum Status {
+  PENDING
+  IN_PROGRESS
+  DONE
+}
+
+model Task {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique @db.VarChar(255)
+  description String?  @db.Text
+  status      Status   @default(PENDING)
+  dueDate     DateTime @map("due_date") @db.Date
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("tasks")
 }
