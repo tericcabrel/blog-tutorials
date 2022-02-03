@@ -69,3 +69,5 @@
 [**Read CSV file in Node.js and Typescript**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-csv-read)
 
 [**Using PlanetScale and TypeORM to build a Node.js REST API**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-typeorm-planetscale)
+
+[**Prisma shadow database**](https://github.com/tericcabrel/blog-tutorials/tree/main/prisma-shadow-database)
