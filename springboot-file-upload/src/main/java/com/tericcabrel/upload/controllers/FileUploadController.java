@@ -18,7 +18,7 @@ public class FileUploadController {
   }
 
   @PostMapping("/upload")
-  public ResponseEntity<UploadResponse> uploadPicture(
+  public ResponseEntity<UploadResponse> uploadFile(
       @RequestParam(name = "file", required = false) MultipartFile file,
       @RequestParam("fullName") String fullName,
       @RequestParam("dateOfBirth") String dateOfBirth
