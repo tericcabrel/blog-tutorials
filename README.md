@@ -71,3 +71,5 @@
 [**Using PlanetScale and TypeORM to build a Node.js REST API**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-typeorm-planetscale)
 
 [**Understand the shadow database feature of Prisma ORM**](https://github.com/tericcabrel/blog-tutorials/tree/main/prisma-shadow-database)
+
+[**Upload a file to a server with SpringBoot**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-file-upload)
