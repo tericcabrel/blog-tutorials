@@ -73,3 +73,5 @@
 [**Understand the shadow database feature of Prisma ORM**](https://github.com/tericcabrel/blog-tutorials/tree/main/prisma-shadow-database)
 
 [**Upload a file to a server with SpringBoot**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-file-upload)
+
+[**Protect your API routes in Next.js with Middleware**](https://github.com/tericcabrel/blog-tutorials/tree/main/next-api-middleware)
