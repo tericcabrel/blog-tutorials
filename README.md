@@ -68,6 +68,8 @@
 
 [**Read CSV file in Node.js and Typescript**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-csv-read)
 
+[**Grammarly: The professional tool writers need**](https://blog.tericcabrel.com/the-professional-tool-writers-need/)
+
 [**Using PlanetScale and TypeORM to build a Node.js REST API**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-typeorm-planetscale)
 
 [**Understand the shadow database feature of Prisma ORM**](https://github.com/tericcabrel/blog-tutorials/tree/main/prisma-shadow-database)
@@ -75,3 +77,7 @@
 [**Upload a file to a server with SpringBoot**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-file-upload)
 
 [**Protect your API routes in Next.js with Middleware**](https://github.com/tericcabrel/blog-tutorials/tree/main/next-api-middleware)
+
+[**Deploy Forem on AWS and build your tech community**](https://blog.tericcabrel.com/deploy-forem-on-aws-build-your-tech-community/)
+
+[**Deploy Forem on Digital Ocean and build your tech community**](https://blog.tericcabrel.com/deploy-forem-on-digital-ocean/)
