@@ -68,12 +68,33 @@ public class UserMovie {
     return addedAt;
   }
 
+  public void setUser(User user) {
+    this.user = user;
+  }
+
+  public void setMovie(Movie movie) {
+    this.movie = movie;
+  }
+
+  @Override
+  public String toString() {
+    return "UserMovie{" +
+        "id=" + id.toString() +
+        ", user=" + user +
+        ", movie=" + movie +
+        ", rate=" + rate +
+        ", review='" + review + '\'' +
+        ", addedAt=" + addedAt +
+        '}';
+  }
+
   @Embeddable
   public static class UserMovieId implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private Integer userId;
+
     private Integer movieId;
 
     public UserMovieId() {}
@@ -98,6 +119,14 @@ public class UserMovie {
 
     public void setMovieId(Integer movieId) {
       this.movieId = movieId;
+    }
+
+    @Override
+    public String toString() {
+      return "UserMovieId{" +
+          "userId=" + userId +
+          ", movieId=" + movieId +
+          '}';
     }
   }
 }
