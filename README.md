@@ -81,3 +81,5 @@
 [**Deploy Forem on AWS and build your tech community**](https://blog.tericcabrel.com/deploy-forem-on-aws-build-your-tech-community/)
 
 [**Deploy Forem on Digital Ocean and build your tech community**](https://blog.tericcabrel.com/deploy-forem-on-digital-ocean/)
+
+[**Handle Many-To-Many relationship using JPA in Spring Boot application - part 1**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-many-to-many-1)
