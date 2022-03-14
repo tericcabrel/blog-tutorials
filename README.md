@@ -82,4 +82,6 @@
 
 [**Deploy Forem on Digital Ocean and build your tech community**](https://blog.tericcabrel.com/deploy-forem-on-digital-ocean/)
 
-[**Handle Many-To-Many relationship using JPA in Spring Boot application - part 1**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-many-to-many-1)
+[**Handle Many-To-Many relationship with JPA in a Spring Boot application - part 1**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-many-to-many-1)
+
+[**Handle Many-To-Many relationship with JPA in a Spring Boot application - part 2**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-many-to-many-2)
