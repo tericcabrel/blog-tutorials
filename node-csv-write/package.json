@@ -1,0 +1,24 @@
+{
+  "name": "node-typescript-starter",
+  "version": "1.0.0",
+  "description": "Node project starter with Typescript, ESLint and Prettier",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon --watch \"*.ts\" --exec \"ts-node\" ./src/index.ts",
+    "eslint:fix": "eslint --fix"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.22",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-sort-destructure-keys": "^1.3.5",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.2.1",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
+  }
+}
