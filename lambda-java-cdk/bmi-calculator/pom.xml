@@ -29,6 +29,18 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/m
     <artifactId>slf4j-simple</artifactId>
     <version>1.7.32</version>
   </dependency>
+  <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-lambda-java-core -->
+  <dependency>
+    <groupId>com.amazonaws</groupId>
+    <artifactId>aws-lambda-java-core</artifactId>
+    <version>1.2.1</version>
+  </dependency>
+  <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-lambda-java-events -->
+  <dependency>
+    <groupId>com.amazonaws</groupId>
+    <artifactId>aws-lambda-java-events</artifactId>
+    <version>3.11.0</version>
+  </dependency>
 </dependencies>
 <build>
   <plugins>
@@ -43,6 +55,8 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/m
             <goal>shade</goal>
           </goals>
           <configuration>
+            <createDependencyReducedPom>false</createDependencyReducedPom>
+            <finalName>bmicalculator</finalName>
             <transformers>
               <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                 <mainClass>com.tericcabrel.App</mainClass>
