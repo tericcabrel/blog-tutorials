@@ -9,12 +9,12 @@ import java.util.HashMap;
 
 import org.junit.jupiter.api.Test;
 
-public class BmiCalculatorStackTest {
+public class InfraStackTest {
 
     @Test
     public void testStack() throws IOException {
         App app = new App();
-        BmiCalculatorStack stack = new BmiCalculatorStack(app, "test");
+        InfraStack stack = new InfraStack(app, "test");
 
         Template template = Template.fromStack(stack);
 
