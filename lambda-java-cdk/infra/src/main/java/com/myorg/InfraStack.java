@@ -5,6 +5,14 @@ import static software.amazon.awscdk.BundlingOutput.ARCHIVED;
 
 import java.util.Arrays;
 import java.util.List;
+import software.amazon.awscdk.CfnOutput;
+import software.amazon.awscdk.CfnOutputProps;
+import software.amazon.awscdk.services.apigatewayv2.alpha.AddRoutesOptions;
+import software.amazon.awscdk.services.apigatewayv2.alpha.HttpApi;
+import software.amazon.awscdk.services.apigatewayv2.alpha.HttpMethod;
+import software.amazon.awscdk.services.apigatewayv2.alpha.PayloadFormatVersion;
+import software.amazon.awscdk.services.apigatewayv2.integrations.alpha.HttpLambdaIntegration;
+import software.amazon.awscdk.services.apigatewayv2.integrations.alpha.HttpLambdaIntegrationProps;
 import software.constructs.Construct;
 import software.amazon.awscdk.BundlingOptions;
 import software.amazon.awscdk.DockerVolume;
@@ -61,5 +69,28 @@ public class InfraStack extends Stack {
             .timeout(Duration.seconds(10))
             .logRetention(RetentionDays.ONE_WEEK)
             .build());
+
+        HttpApi httpApi = new HttpApi(this, "HttpApi");
+
+        HttpLambdaIntegration httpLambdaIntegration = new HttpLambdaIntegration(
+            "this",
+            bmiCalculatorFunction,
+            HttpLambdaIntegrationProps.builder()
+                .payloadFormatVersion(PayloadFormatVersion.VERSION_2_0)
+                .build()
+        );
+
+        httpApi.addRoutes(AddRoutesOptions.builder()
+            .path("/calculate")
+            .methods(singletonList(HttpMethod.POST))
+            .integration(httpLambdaIntegration)
+            .build()
+        );
+
+        new CfnOutput(this, "HttApi", CfnOutputProps.builder()
+            .description("HTTP API URL")
+            .value(httpApi.getApiEndpoint())
+            .build());
+
     }
 }
