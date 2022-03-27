@@ -87,3 +87,5 @@
 [**Handle Many-To-Many relationship with JPA in a Spring Boot application - part 2**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-many-to-many-2)
 
 [**Generate a CSV file from data using Node.js**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-csv-write)
+
+[**Deploy a Java Lambda Function and API Gateway with AWS CDK**](https://github.com/tericcabrel/blog-tutorials/tree/main/lambda-java-cdk)
