@@ -89,3 +89,5 @@
 [**Generate a CSV file from data using Node.js**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-csv-write)
 
 [**Deploy a Java Lambda Function and API Gateway with AWS CDK**](https://github.com/tericcabrel/blog-tutorials/tree/main/lambda-java-cdk)
+
+[**Build an OTP in Node.js using Twilio SMS API and Redis**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-otp-twilio)
