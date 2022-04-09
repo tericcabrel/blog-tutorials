@@ -1,10 +1,13 @@
 import React from 'react';
 import NewsletterForm from "./form/newsletter";
+import { useAccountInfo } from "./hooks/account-info";
 
 const App = () => {
+  const { data } = useAccountInfo();
+
   const handleSubscribe = async (email: string) => {
     console.log(email);
-  }
+  };
 
   return (
     <NewsletterForm
@@ -12,7 +15,7 @@ const App = () => {
       isSubmitError={false}
       isSubmitSuccess={false}
       handleSubscribe={handleSubscribe}
-      newsletterName={"Newsletter name"}
+      newsletterName={data?.name || "Newsletter name"}
       totalIssues={0}
       totalSubscribers={0}
     />
