@@ -32,9 +32,7 @@ const NewsletterForm = ({
 
     await handleSubscribe(email);
 
-    if (isSubmitSuccess) {
-      setEmail('');
-    }
+    setEmail('');
   };
 
   return (
