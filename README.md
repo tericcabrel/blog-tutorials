@@ -91,3 +91,5 @@
 [**Deploy a Java Lambda Function and API Gateway with AWS CDK**](https://github.com/tericcabrel/blog-tutorials/tree/main/lambda-java-cdk)
 
 [**Build an OTP in Node.js using Twilio SMS API and Redis**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-otp-twilio)
+
+[**Build a newsletter form subscription using React and the ConvertKit API**](https://github.com/tericcabrel/blog-tutorials/tree/main/react-newsletter)
