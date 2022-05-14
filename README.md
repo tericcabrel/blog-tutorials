@@ -93,3 +93,7 @@
 [**Build an OTP in Node.js using Twilio SMS API and Redis**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-otp-twilio)
 
 [**Build a newsletter form subscription using React and the ConvertKit API**](https://github.com/tericcabrel/blog-tutorials/tree/main/react-newsletter)
+
+[**Create a Spring Boot project from IntelliJ**](https://blog.tericcabrel.com/create-spring-boot-project-intellij/)
+
+[**Build a Web application with Spring Boot and Tailwind CSS**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-tailwind-css)
