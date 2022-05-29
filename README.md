@@ -97,3 +97,9 @@
 [**Create a Spring Boot project from IntelliJ**](https://blog.tericcabrel.com/create-spring-boot-project-intellij/)
 
 [**Build a Web application with Spring Boot and Tailwind CSS**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-tailwind-css)
+
+[**Deploy a Spring Boot application JAR file with Nginx reverse proxy**](https://github.com/tericcabrel/bmi)
+
+[**Deploy a Spring Boot application with Docker and Nginx Reverse Proxy**](https://github.com/tericcabrel/bmi)
+
+[**Write data in an Excel file using Node.js and Typescript**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-excel-write)
