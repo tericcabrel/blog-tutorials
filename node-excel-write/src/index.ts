@@ -1,3 +1,6 @@
+import Excel from 'exceljs';
+import path from 'path';
+
 type Country = {
   name: string;
   countryCode: string;
@@ -17,4 +20,36 @@ const countries: Country[] = [
   { name: 'Germany', capital: 'Berlin', countryCode: 'DE', phoneIndicator: 49 },
 ];
 
-console.log(countries);
+const exportCountriesFile = async () => {
+  const workbook = new Excel.Workbook();
+  const worksheet = workbook.addWorksheet('Countries List');
+
+  worksheet.columns = [
+    { key: 'name', header: 'Name' },
+    { key: 'countryCode', header: 'Country Code' },
+    { key: 'capital', header: 'Capital' },
+    { key: 'phoneIndicator', header: 'International Direct Dialling' },
+  ];
+
+  worksheet.columns.forEach((sheetColumn) => {
+    sheetColumn.font = {
+      size: 12,
+    };
+    sheetColumn.width = 30;
+  });
+
+  worksheet.getRow(1).font = {
+    bold: true,
+    size: 13,
+  };
+
+  countries.forEach((item) => {
+    worksheet.addRow(item);
+  });
+
+  const exportPath = path.resolve(__dirname, 'countries.xlsx');
+
+  await workbook.xlsx.writeFile(exportPath);
+};
+
+exportCountriesFile();
