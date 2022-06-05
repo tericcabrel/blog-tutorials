@@ -103,3 +103,5 @@
 [**Deploy a Spring Boot application with Docker and Nginx Reverse Proxy**](https://github.com/tericcabrel/bmi)
 
 [**Write data in an Excel file using Node.js and Typescript**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-excel-write)
+
+[**Read an Excel file in Node.js and Typescript**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-excel-read)
