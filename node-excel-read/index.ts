@@ -15,7 +15,7 @@ type Player = {
   lastName: string;
   weight: number;
   height: number;
-  dob: string; // (YYY-MM-DD)
+  dateOfBirth: string; // (YYY-MM-DD)
   hometown: string;
   province: string;
   position: Position;
@@ -28,9 +28,29 @@ type Player = {
 const getCellValue = (row:  Excel.Row, cellIndex: number) => {
   const cell = row.getCell(cellIndex);
 
-  // console.log(cell.value);
+  console.log(cell.value);
 
   return cell.value ? cell.value.toString() : '';
+};
+
+const getCellFormulaValue = (row:  Excel.Row, cellIndex: number) => {
+  const value = row.getCell(cellIndex).value as Excel.CellFormulaValue;
+
+  return value.result ? value.result.toString() : '';
+};
+
+const transformTeam = (value: string): Team => {
+  return value === 'Men' ? 'M' : 'W';
+};
+
+const transformHeight = (value: string): number => {
+  return +value.replace("'", ".");
+};
+
+const transformDateOfBirth = (value: string) => {
+  const date = new Date(value);
+
+  return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 };
 
 const main = async () => {
@@ -45,26 +65,21 @@ const main = async () => {
 
   const players = rows.map((row): Player => {
     return {
-      // @ts-ignore
-      id: getCellValue(row,1),
-      // @ts-ignore
-      team: getCellValue(row, 2),
-      // @ts-ignore
-      country: getCellValue(row, 3),
+      id: +getCellValue(row,1),
+      team: transformTeam(getCellValue(row, 2)),
+      country: getCellValue(row, 3) as Country,
       firstName: getCellValue(row, 4),
       lastName: getCellValue(row, 5),
-      // @ts-ignore
-      weight: getCellValue(row, 6),
-      height: +getCellValue(row, 7),
-      dob: getCellValue(row, 8), // (YYY-MM-DD)
+      weight: +getCellValue(row, 6),
+      height: transformHeight(getCellValue(row, 7)),
+      dateOfBirth: transformDateOfBirth(getCellValue(row, 8)), // (YYY-MM-DD)
       hometown: getCellValue(row, 9),
       province: getCellValue(row, 10),
-      // @ts-ignore
-      position: getCellValue(row, 11),
-      age: +getCellValue(row, 12),
-      heightFt: +getCellValue(row, 13),
-      htln: +getCellValue(row, 14),
-      bmi: +getCellValue(row, 15),
+      position: getCellValue(row, 11) as Position,
+      age: +getCellFormulaValue(row, 12),
+      heightFt: +getCellFormulaValue(row, 13),
+      htln: +getCellFormulaValue(row, 14),
+      bmi: +getCellFormulaValue(row, 15),
     }
   });
 
