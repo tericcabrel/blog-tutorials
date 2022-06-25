@@ -1,0 +1,69 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum Tag {
+  NodeJS
+  Java
+  React
+  GraphQL
+  Spring
+  Typescript
+  Express
+  Docker
+  Jest
+  Jenkins
+  AWS
+}
+
+type Location {
+  address String
+  city    String
+  country String
+}
+
+type Comment {
+  text      String
+  voteCount Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime
+}
+
+model User {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  email       String
+  dateOfBirth DateTime
+  name        String
+  location    Location[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt()
+  Post Post[]
+
+  @@unique([email])
+  @@map("users")
+}
+
+model Post {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  content     String
+  viewCount   Int
+  isPublished Boolean
+  tags        Tag[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt()
+  comments    Comment[]
+  author      User      @relation(fields: [authorId], references: [id])
+  authorId    String    @db.ObjectId
+
+  @@index([authorId])
+  @@map("posts")
+}
