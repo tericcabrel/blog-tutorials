@@ -42,6 +42,26 @@ export const insertUserAndPost = async () => {
 
   console.log(createdUser);
   console.log(createdPost);
+
+  // ....code to create user and post
+  const newComment: Prisma.CommentCreateInput = {
+    text: 'A new comment in the post created above',
+    updatedAt: new Date(),
+    voteCount: 32,
+  };
+
+  const updatedPost = await prisma.post.update({
+    where: {
+      id: createdPost.id,
+    },
+    data: {
+      comments: {
+        push: [newComment],
+      },
+    },
+  });
+
+  console.log(updatedPost);
 };
 
 insertUserAndPost().then();
