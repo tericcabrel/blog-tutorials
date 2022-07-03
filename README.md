@@ -105,3 +105,7 @@
 [**Write data in an Excel file using Node.js and Typescript**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-excel-write)
 
 [**Read an Excel file in Node.js and Typescript**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-excel-read)
+
+[**Connect a Node.js application with MongoDB using Prisma**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-prisma-mongo)
+
+[**Create a Docker image of a Next.js application**](https://github.com/tericcabrel/blog-tutorials/tree/main/docker-nextjs)
