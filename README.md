@@ -109,3 +109,5 @@
 [**Connect a Node.js application with MongoDB using Prisma**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-prisma-mongo)
 
 [**Create a Docker image of a Next.js application**](https://github.com/tericcabrel/blog-tutorials/tree/main/docker-nextjs)
+
+[**Data Caching in a Spring Boot application with Redis**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-caching)
