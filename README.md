@@ -111,3 +111,5 @@
 [**Create a Docker image of a Next.js application**](https://github.com/tericcabrel/blog-tutorials/tree/main/docker-nextjs)
 
 [**Data Caching in a Spring Boot application with Redis**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-caching)
+
+[**Handle a Many-to-Many relationship with Prisma and Node.js**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-prisma-many-to-many)
