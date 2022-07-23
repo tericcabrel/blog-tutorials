@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Movie {
+  id            String   @id @default(cuid())
+  name          String   @unique
+  description   String?
+  releaseDate   DateTime @updatedAt @map("release_date")
+  ratings       MovieRating[]
+
+  @@map("movies")
+}
+
+model User {
+  id          String   @id @default(cuid())
+  email       String   @db.VarChar(100) @unique
+  name        String   @db.VarChar(100)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  ratings     MovieRating[]
+
+  @@map("users")
+}
+
+model MovieRating {
+  movie     Movie    @relation(fields: [movieId], references: [id])
+  movieId   String   @map("movie_id")
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String   @map("user_id")
+  rate      Int
+  review    String?
+  addedAt   DateTime @default(now()) @map("added_at")
+
+  @@id([movieId, userId])
+  @@map("movies_rating")
+}
