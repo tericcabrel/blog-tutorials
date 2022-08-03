@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { filter } from "lodash";
 import { User, users } from "../../../data/users";
 
 type Data = {
@@ -7,7 +6,7 @@ type Data = {
 }
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
-  const simpleUsers: User[] = filter(users, (user) => user.role === "user");
+  const simpleUsers: User[] = users.filter((user) => user.role === "user");
 
   res.status(200).json({ data: simpleUsers });
 };
