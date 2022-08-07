@@ -1,9 +1,12 @@
 import { Request, Response } from 'express';
 import { prisma } from '../utils/prisma';
 import { sleep } from '../utils/sleep';
+import { redis } from '../utils/redis';
+import { Product } from '@prisma/client';
+import { buildSearchProductsCacheKey } from '../utils/cache';
 
 type ProductSearchQuery = {
-  name?: string;
+  name: string;
   category?: string;
   minPrice?: string;
   maxPrice?: string;
@@ -27,17 +30,44 @@ export const createProduct = async (req: Request, res: Response) => {
 };
 
 export const findAllProducts = async (req: Request, res: Response) => {
+  const CACHE_KEY = 'allProducts';
+  const rawCachedData = await redis.get(CACHE_KEY);
+
+  if (rawCachedData) {
+    const cachedData = JSON.parse(rawCachedData) as Product[];
+
+    return res.json({ data: cachedData });
+  }
+
   await sleep(3000);
 
   const products = await prisma.product.findMany();
+
+  redis.set(CACHE_KEY, JSON.stringify(products));
 
   return res.json({ data: products });
 };
 
 export const searchProducts = async (req: Request, res: Response) => {
-  await sleep(3000);
-
   const { available, category, maxPrice, minPrice, name } = req.query as ProductSearchQuery;
+
+  const cacheKey = buildSearchProductsCacheKey('searchProducts', {
+    available,
+    category,
+    maxPrice,
+    minPrice,
+    name,
+  });
+
+  const rawCachedData = await redis.get(cacheKey);
+
+  if (rawCachedData) {
+    const cachedData = JSON.parse(rawCachedData) as Product[];
+
+    return res.json({ data: cachedData });
+  }
+
+  await sleep(3000);
 
   const result = await prisma.product.findMany({
     where: {
@@ -50,6 +80,8 @@ export const searchProducts = async (req: Request, res: Response) => {
       },
     },
   });
+
+  redis.set(cacheKey, JSON.stringify(result));
 
   return res.json({ data: result });
 };
