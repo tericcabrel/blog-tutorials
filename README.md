@@ -113,3 +113,5 @@
 [**Data Caching in a Spring Boot application with Redis**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-caching)
 
 [**Handle a Many-to-Many relationship with Prisma and Node.js**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-prisma-many-to-many)
+
+[**Caching data in Node.js application with Redis**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-caching)
