@@ -115,3 +115,5 @@
 [**Handle a Many-to-Many relationship with Prisma and Node.js**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-prisma-many-to-many)
 
 [**Caching data in Node.js application with Redis**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-caching)
+
+[**Configure rate limiting on a Node.js REST API with Express**](https://github.com/tericcabrel/blog-tutorials/tree/node-api-rate-limiting)
