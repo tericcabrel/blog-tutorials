@@ -6,6 +6,7 @@ import { connectToDatabase } from './databaseConnection';
 import { roleRoute } from './routes/role.route';
 import { userRoute } from './routes/user.route';
 import { apiDocumentation } from './docs/apidoc';
+import { rateLimiterMiddleware } from './rate-limiter-middleware';
 
 dotenv.config();
 
@@ -16,6 +17,8 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use(rateLimiterMiddleware);
 
 app.use('/', roleRoute());
 app.use('/', userRoute());

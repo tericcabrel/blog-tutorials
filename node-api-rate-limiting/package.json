@@ -15,6 +15,7 @@
     "@types/swagger-ui-express": "^4.1.2",
     "@typescript-eslint/eslint-plugin": "^4.14.1",
     "@typescript-eslint/parser": "^4.14.1",
+    "axios": "^0.27.2",
     "eslint": "^7.18.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-prettier": "^3.3.1",
@@ -28,6 +29,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.12.1",
+    "rate-limiter-flexible": "^2.3.9",
     "swagger-ui-express": "^4.1.6"
   }
 }
