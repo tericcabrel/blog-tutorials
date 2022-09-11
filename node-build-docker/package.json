@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon --watch \"*.ts\" --exec \"ts-node\" ./src/index.ts",
-    "eslint:fix": "eslint --fix"
+    "eslint:fix": "eslint --fix",
+    "build": "esbuild ./src/index.ts --bundle --platform=node --outfile=build/index.js"
   },
   "devDependencies": {
     "@types/express": "^4.17.11",
