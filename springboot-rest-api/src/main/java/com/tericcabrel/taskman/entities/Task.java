@@ -20,7 +20,7 @@ public class Task {
     @Lob
     private String description;
 
-    @Column(nullable = false, columnDefinition = "varchar(10) not null default 'PENDING'")
+    @Column(nullable = false, columnDefinition = "varchar(20) not null default 'PENDING'")
     @Enumerated(EnumType.STRING)
     private TaskStatusEnum status;
 
@@ -29,37 +29,37 @@ public class Task {
 
     @CreationTimestamp
     @Column(updatable = false, name = "created_at")
-    protected Date createdAt;
+    private Date createdAt;
 
     @UpdateTimestamp
     @Column(name = "updated_at")
-    protected Date updatedAt;
+    private Date updatedAt;
 
-    public Integer id() {
+    public Integer getId() {
         return id;
     }
 
-    public String name() {
+    public String getName() {
         return name;
     }
 
-    public String description() {
+    public String getDescription() {
         return description;
     }
 
-    public TaskStatusEnum status() {
+    public TaskStatusEnum getStatus() {
         return status;
     }
 
-    public Date dueDate() {
+    public Date getDueDate() {
         return dueDate;
     }
 
-    public Date createdAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public Date updatedAt() {
+    public Date getUpdatedAt() {
         return updatedAt;
     }
 
