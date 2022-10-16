@@ -123,3 +123,5 @@
 [**Make HTTP requests in a Java application using Spring RestTemplate**](https://github.com/tericcabrel/blog-tutorials/tree/spring-httpclient)
 
 [**Build a REST API With Spring Boot and MySQL**](https://github.com/tericcabrel/blog-tutorials/tree/springboot-rest-api)
+
+[**Document a Spring Boot REST API with Swagger and Open API**](https://github.com/tericcabrel/blog-tutorials/tree/springboot-rest-api-swagger)
