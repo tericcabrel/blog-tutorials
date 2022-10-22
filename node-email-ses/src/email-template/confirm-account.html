@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Registration confirmation</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        body {
+            font-family: calibri, 'DejaVu Sans', Arial, Helvetica, sans-serif;
+            background-color: #cbd5e1;
+        }
+        .container {
+            margin: 0 auto;
+            width: 600px;
+            padding: 10px 30px 30px 30px;
+            box-shadow: 0 0 4px #ddd;
+            background-color: #f3f4f6;
+            border-radius: 5px;
+        }
+        a.link {
+            border: solid 1px #0ea5e9;
+            background-color: #0ea5e9;
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            display: block;
+            width: 400px;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 50px;
+            border-radius: 5px;
+        }
+        .text-blue {
+            color: #0ea5e9;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="text-blue">Confirm your account</h1>
+    <div>Welcome <b class="text-blue">{{name}}</b> !</div>
+    <p>
+        Your account has been created on our platform
+        <br/><br/>
+        Find your login information below:
+        <br/><br/>
+        <span style="font-size: 14px; font-weight: bold">
+            Email address : <span class="text-blue">{{email}}</span>
+        </span>
+        <br/><br/>
+        To confirm the validity of your email address, please click on the link below
+    </p>
+    <p>
+        <a class="link" href="{{url}}" target="_blank">Confirm my account</a>
+    </p>
+    <br>
+    <p>
+        Regards, <br />
+        <em>The AwesomeApp Team</em>
+    </p>
+</div>
+</body>
+</html>
