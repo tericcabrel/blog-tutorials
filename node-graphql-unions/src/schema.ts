@@ -1,27 +1,42 @@
 import { gql } from 'apollo-server';
 
 const typeDefs = gql`
+  scalar DateTime
+
   type User {
     id: ID!
-    firstName: String!
-    lastName: String!
+    name: String!
     email: String!
     password: String!
   }
 
-  input CreateUserInput {
-    firstName: String!
-    lastName: String!
-    email: String!
-    password: String!
+  type Folder {
+    id: ID!
+    name: String!
+    description: String
+    path: String!
+    parent: Folder
+    author: User!
+    createdAt: DateTime!
+    updatedAt: DateTime!
   }
 
-  type Mutation {
-    registerUser(input: CreateUserInput!): User!
+  type File {
+    id: ID!
+    name: String!
+    description: String
+    mimeType: String!
+    size: Int!
+    folder: Folder!
+    author: User!
+    createdAt: DateTime!
+    updatedAt: DateTime!
   }
+
+  union Document = File | Folder
 
   type Query {
-    users: [User!]!
+    search(keyword: String!): [Document!]!
   }
 `;
 

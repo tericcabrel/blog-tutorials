@@ -3,6 +3,12 @@ schema: src/schema.ts
 documents: null
 generates:
   src/types/types.d.ts:
+    config:
+      scalars:
+        DateTime: Date
+      mappers:
+        File: ../models/DocumentEntity
+        Folder: ../models/DocumentEntity
     plugins:
       - "typescript"
       - "typescript-resolvers"
