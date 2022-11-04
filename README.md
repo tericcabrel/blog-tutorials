@@ -127,3 +127,5 @@
 [**Document a Spring Boot REST API with Swagger and Open API**](https://github.com/tericcabrel/blog-tutorials/tree/springboot-rest-api-swagger)
 
 [**Send email in Node.js using Handlebars and Amazon SES**](https://github.com/tericcabrel/blog-tutorials/tree/node-email-ses)
+
+[**Send email in Node.js using Handlebars and Amazon SES**](https://github.com/tericcabrel/blog-tutorials/tree/node-graphql-unions)
