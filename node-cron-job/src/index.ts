@@ -1,9 +1,25 @@
-const addition = (a: number, b: number) => {
-  return a + b;
-};
+import express from 'express';
+import { weeklyReportScheduler } from './scheduler';
 
-const number1 = 5;
-const number2 = 10;
-const result = addition(number1, number2);
+const PORT = 4500;
 
-console.log('The result is %d', result);
+const app = express();
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+app.post('/start-scheduler', async (req, res) => {
+  await weeklyReportScheduler.start();
+
+  return res.json({ message: 'OK' });
+});
+
+app.post('/stop-scheduler', async (req, res) => {
+  await weeklyReportScheduler.stop();
+
+  return res.json({ message: 'OK' });
+});
+
+app.listen(PORT, () => {
+  console.log(`Application started on URL http://localhost:${PORT} 🎉`);
+});
