@@ -129,3 +129,5 @@
 [**Send email in Node.js using Handlebars and Amazon SES**](https://github.com/tericcabrel/blog-tutorials/tree/node-email-ses)
 
 [**Send email in Node.js using Handlebars and Amazon SES**](https://github.com/tericcabrel/blog-tutorials/tree/node-graphql-unions)
+
+[**Schedule background tasks in Node.js with node-cron**](https://github.com/tericcabrel/blog-tutorials/tree/node-cron-job)
