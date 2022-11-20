@@ -1,5 +1,5 @@
 # MongoDB replica set
-This project contains scripts to create a recplica set in MongoDB without hassle
+This project contains scripts to create a replica set in MongoDB without hassle
 
 ## Prerequisites
 To make this work, you must have Docker and Docker-compose installed on your computer
