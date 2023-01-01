@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import { searchProducts } from './utils';
 
 dotenv.config();
 
@@ -13,6 +14,12 @@ app.use(express.json());
 
 app.get('/', (req, res) => {
   return res.json({ message: 'Hello World!' });
+});
+
+app.get('/products/search', (req, res) => {
+  const result = searchProducts();
+
+  return res.json({ result, APP_PORT: PORT });
 });
 
 app.listen(PORT, () => {

@@ -1,0 +1,11 @@
+config:
+  target: "http://nodelb.tericcabrel.com"
+  phases:
+    - duration: 30
+      arrivalRate: 10
+
+scenarios:
+  - name: "Search products"
+    flow:
+      - get:
+          url: "/products/search"
