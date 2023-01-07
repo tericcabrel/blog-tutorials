@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 app.get('/products/search', (req, res) => {
   const result = searchProducts();
 
-  return res.json({ result, APP_PORT: PORT });
+  return res.json({ result, processId: process.pid });
 });
 
 app.listen(PORT, () => {

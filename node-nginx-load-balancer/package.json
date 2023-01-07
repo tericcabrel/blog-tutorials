@@ -8,7 +8,7 @@
     "start": "nodemon --watch \"*.ts\" --exec \"ts-node\" ./src/index.ts",
     "eslint:fix": "eslint --fix",
     "package": "docker build -t nodelb-app:latest .",
-    "package:run": "docker run --rm -d -p 4501:4500 --name nodelbapp-1 nodelb-app:latest",
+    "package:run": "docker run --rm -d -p 4501:4500 --env MAX_NUMBER=10 --name nodelbapp-1 nodelb-app:latest",
     "package:tag": "docker tag nodelb-app:latest tericcabrel/nodelb-app:latest",
     "package:push": "docker push tericcabrel/nodelb-app:latest",
     "test:load": "artillery run artillery.yaml"

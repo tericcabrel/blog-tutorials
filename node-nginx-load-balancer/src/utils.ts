@@ -11,7 +11,7 @@ const fibonacci = (num: number) => {
 };
 
 export const searchProducts = () => {
-  const length = 25;
+  const length = parseInt(process.env.MAX_NUMBER ?? '25', 10);
 
   return fibonacci(length);
 };
