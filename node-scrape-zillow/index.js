@@ -2,22 +2,37 @@ const unirest = require('unirest');
 const cheerio = require('cheerio');
 
 async function zillow() {
-    const target_url="https://www.zillow.com/homes/for_sale/";
+    const target_url = "https://api.scrapingdog.com/scrape?api_key=xxxxxxxxxxxxxxxx&url=https://www.zillow.com/homes/for_sale/&dynamic=false";
     const zillow_data = await unirest.get(target_url);
-
-    console.log(zillow_data.body);
 
     const $ = cheerio.load(zillow_data.body);
 
     if (zillow_data.statusCode === 200) {
-        $('.list-card-info').each(function () {
-            const price = $(this).find('.list-card-price').text();
-            const address = $(this).find('.list-card-addr').text();
-            const bedrooms = $(this).find('.list-card-details li:nth-child(1)').text();
+        const housesInfo = [];
 
-            console.log(price, address, bedrooms);
+        $('ul li.with_constellation').each(function () {
+            const price = $(this).find('span[data-test="property-card-price"]').text();
+            const address = $(this).find('address[data-test="property-card-addr"]').text();
+
+            const bedrooms = [];
+            $(this).find('span[data-test="property-card-price"]')
+                .parent().next().children('ul').children('li').each(function () {
+                    bedrooms.push($(this).text());
+                });
+
+            if (!address) {
+                return;
+            }
+
+            housesInfo.push({
+                address,
+                bedrooms: bedrooms.join(' - '),
+                price,
+            })
         });
-    }
+
+        console.table(housesInfo);
+   }
 }
 
 zillow();
