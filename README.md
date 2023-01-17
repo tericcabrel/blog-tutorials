@@ -133,3 +133,7 @@
 [**Schedule background tasks in Node.js with node-cron**](https://github.com/tericcabrel/blog-tutorials/tree/node-cron-job)
 
 [**Validate request body and parameter in a Node.js Express API**](https://github.com/tericcabrel/blog-tutorials/tree/node-rest-api-validation)
+
+[**My year 2022 in review**](https://blog.tericcabrel.com/year-2022-in-review/)
+
+[**How to Scrape Zillow using Node.js**](https://github.com/tericcabrel/blog-tutorials/tree/node-scrape-zillow)
