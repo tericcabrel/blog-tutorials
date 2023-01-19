@@ -136,4 +136,6 @@
 
 [**My year 2022 in review**](https://blog.tericcabrel.com/year-2022-in-review/)
 
+[**Load balancing a Node.js application with Nginx**](https://blog.tericcabrel.com/load-balancing-nodejs-application-nginx/)
+
 [**How to Scrape Zillow using Node.js**](https://github.com/tericcabrel/blog-tutorials/tree/node-scrape-zillow)
