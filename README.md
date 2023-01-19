@@ -116,26 +116,26 @@
 
 [**Caching data in Node.js application with Redis**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-caching)
 
-[**Build a Docker image of a Node.js application**](https://github.com/tericcabrel/blog-tutorials/tree/node-build-docker)
+[**Build a Docker image of a Node.js application**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-build-docker)
 
-[**Configure rate limiting on a Node.js REST API with Express**](https://github.com/tericcabrel/blog-tutorials/tree/node-api-rate-limiting)
+[**Configure rate limiting on a Node.js REST API with Express**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-api-rate-limiting)
 
-[**Make HTTP requests in a Java application using Spring RestTemplate**](https://github.com/tericcabrel/blog-tutorials/tree/spring-httpclient)
+[**Make HTTP requests in a Java application using Spring RestTemplate**](https://github.com/tericcabrel/blog-tutorials/tree/main/spring-httpclient)
 
-[**Build a REST API With Spring Boot and MySQL**](https://github.com/tericcabrel/blog-tutorials/tree/springboot-rest-api)
+[**Build a REST API With Spring Boot and MySQL**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-rest-api)
 
-[**Document a Spring Boot REST API with Swagger and Open API**](https://github.com/tericcabrel/blog-tutorials/tree/springboot-rest-api-swagger)
+[**Document a Spring Boot REST API with Swagger and Open API**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-rest-api-swagger)
 
-[**Send email in Node.js using Handlebars and Amazon SES**](https://github.com/tericcabrel/blog-tutorials/tree/node-email-ses)
+[**Send email in Node.js using Handlebars and Amazon SES**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-email-ses)
 
-[**Using GraphQL union type in a Node.js application**](https://github.com/tericcabrel/blog-tutorials/tree/node-graphql-unions)
+[**Using GraphQL union type in a Node.js application**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-graphql-unions)
 
 [**Schedule background tasks in Node.js with node-cron**](https://github.com/tericcabrel/blog-tutorials/tree/node-cron-job)
 
-[**Validate request body and parameter in a Node.js Express API**](https://github.com/tericcabrel/blog-tutorials/tree/node-rest-api-validation)
+[**Validate request body and parameter in a Node.js Express API**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-rest-api-validation)
 
 [**My year 2022 in review**](https://blog.tericcabrel.com/year-2022-in-review/)
 
-[**Load balancing a Node.js application with Nginx**](https://blog.tericcabrel.com/load-balancing-nodejs-application-nginx/)
+[**Load balancing a Node.js application with Nginx**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-nginx-load-balancer)
 
-[**How to Scrape Zillow using Node.js**](https://github.com/tericcabrel/blog-tutorials/tree/node-scrape-zillow)
+[**How to Scrape Zillow using Node.js**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-scrape-zillow)
