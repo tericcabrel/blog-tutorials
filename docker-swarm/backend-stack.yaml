@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  api:
+    image: tericcabrel/nodelb-app:latest
+    networks:
+      - backend-app-net
+    deploy:
+      replicas: 2
+      mode: replicated
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: '1'
+          memory: 500M
+        reservations:
+          cpus: '0.50'
+          memory: 250M
+      placement:
+        constraints:
+          - node.platform.os == linux
+          - node.role == manager
+
+networks:
+  backend-app-net:
+    external: true
