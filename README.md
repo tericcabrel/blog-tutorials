@@ -139,3 +139,5 @@
 [**Load balancing a Node.js application with Nginx**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-nginx-load-balancer)
 
 [**How to Scrape Zillow using Node.js**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-scrape-zillow)
+
+[**Manage your Docker container with Docker Swarm**](https://github.com/tericcabrel/blog-tutorials/tree/main/docker-swarm)
