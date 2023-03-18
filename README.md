@@ -141,3 +141,6 @@
 [**How to Scrape Zillow using Node.js**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-scrape-zillow)
 
 [**Manage your Docker container with Docker Swarm**](https://github.com/tericcabrel/blog-tutorials/tree/main/docker-swarm)
+
+[**Install RabbitMQ on a Ubuntu Server 22.04 **](https://blog.tericcabrel.com/install-rabbitmq-ubuntu-server/)
+
