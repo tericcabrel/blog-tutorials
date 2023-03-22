@@ -1,5 +1,7 @@
 # blog-tutorials
 
+Update some readme stuff
+
 [**Set up a Node.js project with Typescript, ESLint and Prettier**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-typescript-starter)
 
 [**Use MongoDB with a Node.js application**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-typescript-mongo)
