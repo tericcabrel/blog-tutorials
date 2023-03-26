@@ -1,11 +1,10 @@
-# Node Prisma Typescript MySQL
+# Node Typescript Starter
 
-This project shows the use of Prisma in a Node.js application with Typescript.
+This project contains a minimal starter for Node.js project with Typescript, ESLint and Prettier
 
 ## Prerequisites
-- Node.js 12.2+
+- Node.js 16+
 - Yarn or NPM
-- MySQL 5.6+
 
 ## Installation
 - Install dependencies
