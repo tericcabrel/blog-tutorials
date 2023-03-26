@@ -144,3 +144,9 @@
 
 [**Install RabbitMQ on a Ubuntu Server 22.04 **](https://blog.tericcabrel.com/install-rabbitmq-ubuntu-server/)
 
+[**Asynchronous communication between Node.js applications using RabbiMQ**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-rabbitmq)
+
+[**Publish a message to many Node.js applications using RabbitMQ**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-rabbitmq-pubsub)
+
+[**Send and receive messages from a Spring boot applications using RabbitMQ**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-rabbitmq)
+
