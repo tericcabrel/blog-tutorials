@@ -1,28 +1,22 @@
-import { gql } from 'apollo-server';
-
-const typeDefs = gql`
-  type User {
+type User {
     id: ID!
     firstName: String!
     lastName: String!
     email: String!
     password: String!
-  }
+}
 
-  input CreateUserInput {
+input CreateUserInput {
     firstName: String!
     lastName: String!
     email: String!
     password: String!
-  }
+}
 
-  type Mutation {
+type Mutation {
     registerUser(input: CreateUserInput!): User!
-  }
+}
 
-  type Query {
+type Query {
     users: [User!]!
-  }
-`;
-
-export default typeDefs;
+}

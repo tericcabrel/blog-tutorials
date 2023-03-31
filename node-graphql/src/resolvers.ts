@@ -1,3 +1,4 @@
+
 import { CreateUserInput, MutationResolvers, QueryResolvers, Resolvers } from './types/types';
 import datasource from './datasource';
 
@@ -30,4 +31,4 @@ const resolvers: Resolvers = {
   },
 };
 
-export default resolvers;
+export { resolvers };
