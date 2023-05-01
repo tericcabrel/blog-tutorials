@@ -150,3 +150,6 @@
 
 [**Send and receive messages from a Spring boot applications using RabbitMQ**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-rabbitmq)
 
+[**Get the user IP address in a Node.js application with Express**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-ip-address)
+
+[**How to scrape amazon.com with Node.js**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-scrape-amazon)
