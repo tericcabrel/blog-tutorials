@@ -1,0 +1,44 @@
+datasource db {
+  provider          = "mysql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+  relationMode      = "prisma"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum TaskStatus {
+  PENDING
+  IN_PROGRESS
+  DONE
+}
+
+model User {
+  id          Int         @id @default(autoincrement())
+  firstName   String      @map("first_name")
+  lastName    String      @map("last_name")
+  email       String
+  password    String
+  createdAt   DateTime    @default(now()) @map("created_at")
+  updatedAt   DateTime    @updatedAt @map("updated_at")
+  tasks       Task[]
+
+  @@map("users")
+}
+
+model Task {
+  id          Int         @id @default(autoincrement())
+  name        String
+  description String      @db.Text
+  status      TaskStatus  @default(PENDING)
+  dueDate     DateTime    @map("due_date")
+  createdAt   DateTime    @default(now()) @map("created_at")
+  updatedAt   DateTime    @updatedAt @map("updated_at")
+  owner       User        @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  ownerId     Int         @map("owner_id")
+
+  @@map("tasks")
+}
+
