@@ -1,0 +1,136 @@
+{
+	"info": {
+		"_postman_id": "8899f3f6-ba51-4222-8c6d-cbfa6dd7a1c3",
+		"name": "Ghast API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7659212"
+	},
+	"item": [
+		{
+			"name": "Create a post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"authorId\": \"6488c270ac6dc4ca0664bce7\",\n  \"title\": \"Blog post title three\",\n  \"content\": \"Blog post content three\",\n  \"tags\": [\"web\", \"tutorials\"],\n  \"isFeatured\": false,\n  \"status\": \"archived\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:3000/posts",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve all posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:3000/posts",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve a post",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:3000/posts/6490c22b6a706da8ed3ebe2d",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"posts",
+						"6490c22b6a706da8ed3ebe2d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a post",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:3000/posts/6490c22b6a706da8ed3ebe2d",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"posts",
+						"6490c22b6a706da8ed3ebe2d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a post",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"authorId\": \"6488c270ac6dc4ca0664bce7\",\n  \"title\": \"Blog post title three updated\",\n  \"content\": \"Blog post content three updated\",\n  \"tags\": [\"web\", \"tutorials\"],\n  \"isFeatured\": true,\n  \"status\": \"published\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:3000/posts/6490c29f47ede829b24ae07a",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"posts",
+						"6490c29f47ede829b24ae07a"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

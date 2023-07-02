@@ -153,3 +153,13 @@
 [**Get the user IP address in a Node.js application with Express**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-ip-address)
 
 [**How to scrape amazon.com with Node.js**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-scrape-amazon)
+
+[**Install Node.js using NVM**](https://blog.tericcabrel.com/install-node-with-nvm/)
+
+[**Handle Database data integrity with the Prisma ORM**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-prisma-data-integrity)
+
+[**Perform Web scraping in Node.js using a scraping browser**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-scraping-browser)
+
+[**Create a REST API with AWS Lambda and API Gateway using AWS CDK**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-lambda-cdk-rest-api)
+
+
