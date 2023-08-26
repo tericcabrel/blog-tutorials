@@ -161,5 +161,3 @@
 [**Perform Web scraping in Node.js using a scraping browser**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-scraping-browser)
 
 [**Create a REST API with AWS Lambda and API Gateway using AWS CDK**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-lambda-cdk-rest-api)
-
-
