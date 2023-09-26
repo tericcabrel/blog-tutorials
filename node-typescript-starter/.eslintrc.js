@@ -1,14 +1,11 @@
 module.exports = {
-  parser: '@typescript-eslint/parser', // Specifies the ESLint parser
-  extends: [
-    'plugin:@typescript-eslint/recommended', // Uses the recommended rules from the @typescript-eslint/eslint-plugin
-    'prettier/@typescript-eslint', // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
-    'plugin:prettier/recommended', // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
-  ],
-  plugins: ['sort-destructure-keys'],
+  parser: '@typescript-eslint/parser',
+  extends: ['plugin:prettier/recommended', 'prettier', 'eslint:recommended'],
+  plugins: ['@typescript-eslint',],
   parserOptions: {
-    ecmaVersion: 2020, // Allows for the parsing of modern ECMAScript features
-    sourceType: 'module', // Allows for the use of imports
+    ecmaVersion: 2022,
+    sourceType: 'module',
+    project: 'tsconfig.json',
   },
   env: {
     es6: true,
@@ -22,27 +19,5 @@ module.exports = {
     'space-in-parens': 'error',
     'no-multiple-empty-lines': 'error',
     'prefer-const': 'error',
-    'no-use-before-define': 'error',
-    'max-len': ['error', 150],
-    '@typescript-eslint/ban-ts-comment': 'off',
-    '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
-    'sort-destructure-keys/sort-destructure-keys': 2,
-    '@typescript-eslint/member-ordering': 'error',
-    '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
-    '@typescript-eslint/prefer-optional-chain': 'error',
-    '@typescript-eslint/no-unused-vars': [
-      'error',
-      {
-        ignoreRestSiblings: true,
-      },
-    ],
-    '@typescript-eslint/ban-ts-ignore': 'off',
-    '@typescript-eslint/explicit-function-return-type': 'off',
-    'prefer-destructuring': ['error'],
-    'prefer-template': 'error',
-    'object-shorthand': 'warn',
-    'newline-after-var': ['error', 'always'],
-    curly: 'error',
   },
 };
