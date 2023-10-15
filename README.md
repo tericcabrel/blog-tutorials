@@ -161,3 +161,10 @@
 [**Perform Web scraping in Node.js using a scraping browser**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-scraping-browser)
 
 [**Create a REST API with AWS Lambda and API Gateway using AWS CDK**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-lambda-cdk-rest-api)
+
+[**Automate the deployment of a SpringBoot application using GitHub Actions CI/CD**](https://github.com/tericcabrel/bmi/tree/with-cicd)
+
+[**Set up the GitHub integration for Slack for faster code reviews**](https://blog.tericcabrel.com/github-integration-slack-setup)
+
+[**Host a static website on AWS with S3 and CloudFront**](https://blog.tericcabrel.com/github-integration-slack-setup)
+
