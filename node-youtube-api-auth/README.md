@@ -1,4 +1,4 @@
-# Node Typescript Starter
+# Node YouTube API authentication
 
 This project contains a minimal starter for Node.js project with Typescript, ESLint and Prettier
 
@@ -12,7 +12,14 @@ This project contains a minimal starter for Node.js project with Typescript, ESL
 yarn install
 ```
 
-- Start Application
+- Create local environment file, then set the Client ID and the client secret
+```shell
+cp .env.example .env
+
+nano .env
+```
+
+- Generate the access token
 ```bash
 yarn start
 ```
