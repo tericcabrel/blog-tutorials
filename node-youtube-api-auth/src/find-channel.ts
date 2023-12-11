@@ -1,12 +1,3 @@
-/*
-{
-  access_token: 'ya29.a0AfB_byCPOqrqpuZdcJ_ljWTgl-4kRht4WfNwxRa4iVo67fQVZvTIu2synkEpfrp6Eq559u4E1mXtz4trArftVzu3Ly24NKkM06sq4LMDSfz3Fm9UG2Mul0aiBJWVvcvzY75LjD38Ns57orYy2RMbCTfGi1QJP5XVW1fPaCgYKAbwSARESFQHGX2MiYmHBT-YWtf4ORzJkyrqNvw0171',
-    refresh_token: '1//03MzkN_32mwZKCgYIARAAGAMSNwF-L9IrKsMF4TFZm1S3TsLpEd-Rl1fCMSTTc9FOvev6fn20RdGTWTmJQJ0xVMhX_SKRgaB2HHA',
-  scope: 'https://www.googleapis.com/auth/youtube.readonly',
-  token_type: 'Bearer',
-  expiry_date: 1702241833059
-}*/
-
 import { google } from 'googleapis';
 import { Credentials, OAuth2Client } from 'google-auth-library';
 import { configDotenv } from 'dotenv';
@@ -25,7 +16,6 @@ const { CLIENT_EXPIRATION_DATE, CLIENT_REFRESH_TOKEN, CLIENT_TOKEN, GOOGLE_CLIEN
 
 const { OAuth2 } = google.auth;
 const SCOPE = 'https://www.googleapis.com/auth/youtube.readonly';
-// const YOUTUBE_CHANNEL_ID = 'Amigoscode';
 const YOUTUBE_CHANNEL_ID = 'UC2KfmYEM4KCuA1ZurravgYw';
 
 const oauth2Client = new OAuth2(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REDIRECT_URI);
@@ -52,7 +42,6 @@ const retrieveChannelInfo = (oauth2Client: OAuth2Client, channelName: string): P
       {
         auth: oauth2Client,
         id: [channelName],
-        // forUsername: channelName,
         part: ['snippet', 'contentDetails', 'statistics'],
       },
       (error, response) => {
