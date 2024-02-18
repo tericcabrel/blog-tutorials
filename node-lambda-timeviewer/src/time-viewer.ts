@@ -1,6 +1,11 @@
 import { APIGatewayProxyHandler } from 'aws-lambda';
 import { getTimeZones } from "@vvo/tzdb";
-import { utcToZonedTime, format } from 'date-fns-tz';
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+import timezone from 'dayjs/plugin/timezone'
+
+dayjs.extend(utc)
+dayjs.extend(timezone)
 
 export const handler: APIGatewayProxyHandler = async (event) => {
   const country = process.env.COUNTRY;
@@ -15,9 +20,10 @@ export const handler: APIGatewayProxyHandler = async (event) => {
     };
   }
 
-  const zonedDate = utcToZonedTime(new Date(), timeZone.name)
-  const pattern = 'dd-MM-yyyy HH:mm:ss.SSS \'GMT\' XXX (z)'
-  const output = format(zonedDate, pattern, { timeZone: timeZone.name })
+  const dayjsUtc = dayjs(new Date());
+  const zonedDate = dayjsUtc.tz(timeZone.name)
+  const pattern = 'DD-MM-YYYY HH:mm:ss.SSS Z';
+  const output = zonedDate.format(pattern);
 
   return {
     statusCode: 200,
