@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique @db.VarChar(100)
+  name      String   @db.VarChar(100)
+  bonusMark Int      @map("bonus_mark") @default(0)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  orders   Order[]
+  payments Payment[]
+
+  @@map("users")
+}
+
+enum OrderStatus {
+  CREATED
+  PROCESSING
+  SHIPPED
+  CANCELLED
+}
+
+model Order {
+  id        Int         @id @default(autoincrement())
+  reference String      @unique @db.VarChar(15)
+  status    OrderStatus @default(CREATED)
+  amount    Int
+  createdAt DateTime    @default(now()) @map("created_at")
+  updatedAt DateTime    @updatedAt @map("updated_at")
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    Int         @map("user_id")
+
+  payments Payment[]
+
+  @@map("orders")
+}
+
+enum PaymentStatus {
+  CREATED
+  SUCCEED
+  FAILED
+}
+
+model Payment {
+  id        Int           @id @default(autoincrement())
+  reference String        @unique @db.VarChar(15)
+  status    PaymentStatus @default(CREATED)
+  amount    Int
+  createdAt DateTime      @default(now()) @map("created_at")
+  updatedAt DateTime      @updatedAt @map("updated_at")
+  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    Int           @map("user_id")
+  order     Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId   Int           @map("order_id")
+
+  @@map("payments")
+}
