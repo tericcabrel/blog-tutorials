@@ -168,3 +168,28 @@
 
 [**Host a static website on AWS with S3 and CloudFront**](https://blog.tericcabrel.com/github-integration-slack-setup)
 
+[**Upgrade Node.js using NVM the right way**](https://blog.tericcabrel.com/upgrade-nodejs-version-nvm/)
+
+[**Backup and Restore a MongoDB database**](https://blog.tericcabrel.com/backup-and-restore-mongodb/)
+
+[**Implement JWT authentication in a Spring Boot 3 application**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-jwt-auth)
+
+[**Implement Role-based Access Control in Spring Boot 3**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-rbac-auth)
+
+[**Spring Boot 3 and Docker compose integration**](https://github.com/tericcabrel/blog-tutorials/tree/main/springboot-docker-compose)
+
+[**Deploy a Static Website on AWS S3 and CloudFront with AWS CDK**](https://github.com/tericcabrel/blog-tutorials/tree/main/aws-cdk-static-website)
+
+[**Retrieve YouTube API v3 key with Node.js**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-youtube-api-auth)
+
+[**Retrieve videos using YouTube Data API v3 in Node.js**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-youtube-api-data)
+
+[**Install and use the AWS CLI v2 locally**](https://blog.tericcabrel.com/install-aws-cli-v2)
+
+[**Configure a custom domain with SSL on AWS CloudFront**](https://blog.tericcabrel.com/cloudfront-custom-domain-with-ssl)
+
+[**Install and use the AWS SDK v3 in Node.js**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-lambda-sdk)
+
+[**Handle database transactions in Node.js with Prisma ORM**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-prisma-transaction)
+
+[**Read environment variables in a Node.js application**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-app-env)
