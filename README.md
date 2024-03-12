@@ -193,3 +193,5 @@
 [**Handle database transactions in Node.js with Prisma ORM**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-prisma-transaction)
 
 [**Read environment variables in a Node.js application**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-app-env)
+
+[**Translate texts in Node.js with Amazon Translate**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-aws-translate)
