@@ -8,7 +8,7 @@ FILENAME="db_name-${TODAY}.tar"
 echo "${FILENAME}.gz"
 
 # Dump only the data and the schema (data definitions).
-pg_dump --dbname=postgresql://postgres:postgres@2.tcp.ngrok.io:16331/postgres -F t > "/tmp/${FILENAME}"
+pg_dump --dbname=postgresql://postgres:secret@2.tcp.eu.ngrok.io:18635/postgres -F t > "/tmp/${FILENAME}"
 
 if [ $? -eq 0 ]; then
   exit 0

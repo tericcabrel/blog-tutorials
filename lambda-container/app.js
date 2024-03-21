@@ -1,10 +1,10 @@
 'use strict';
 
-const childProcess = require("child_process");
-const path = require("path");
+const childProcess= require("child_process");
+const path= require("path");
 
 const backupDatabase = () => {
-  const scriptFilePath = path.resolve(__dirname, "./backup.sh");
+  const scriptFilePath =path.resolve(__dirname, "./backup.sh");
 
   return new Promise((resolve, reject) => {
     childProcess.execFile(scriptFilePath, (error) => {
@@ -33,3 +33,4 @@ module.exports.handler = async (event) => {
     message: "Failed to backup the database! Check out the logs for more details"
   };
 };
+

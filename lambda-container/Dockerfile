@@ -1,6 +1,6 @@
 ARG FUNCTION_DIR="/function"
 
-FROM node:14-buster
+FROM node:20-buster
 
 RUN apt-get update && \
     apt install -y \
@@ -15,8 +15,7 @@ RUN apt-get update && \
 
 RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
     echo "deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main" | tee /etc/apt/sources.list.d/pgdg.list && \
-    apt-get update && apt-get -y install postgresql-client-12
-
+    apt-get update && apt-get -y install postgresql-client-14
 
 ARG FUNCTION_DIR
 
