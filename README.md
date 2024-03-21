@@ -40,7 +40,7 @@
 
 [**Set up a personal blog with Ghost and Docker**](https://github.com/tericcabrel/blog-tutorials/tree/main/blog-ghost-docker)
 
-[**Backup a database using AWS Lambda container**](https://github.com/tericcabrel/blog-tutorials/tree/main/lambda-container-backup-db)
+[**How to deploy a AWS Lambda container with Docker**](https://github.com/tericcabrel/blog-tutorials/tree/main/lambda-container)
 
 [**Create a GraphQL application with Node.js and Apollo server 3**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-graphql)
 
