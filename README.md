@@ -195,3 +195,5 @@
 [**Read environment variables in a Node.js application**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-app-env)
 
 [**Translate texts in Node.js with Amazon Translate**](https://github.com/tericcabrel/blog-tutorials/tree/main/node-aws-translate)
+
+[**Create an OpenID Connect for GitHub with the AWS CDK**](https://github.com/tericcabrel/blog-tutorials/tree/main/github-oidc-aws-cdk)
