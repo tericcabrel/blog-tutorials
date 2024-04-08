@@ -1,0 +1,46 @@
+name: Push Docker Image
+
+on: [pull_request]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+permissions:
+  id-token: write 
+  contents: read
+
+jobs:
+  build-push-image:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: ${{ secrets.AWS_REGION }}
+          role-to-assume: arn:aws:iam:<account-id>:role/<role-name>
+
+      - name: Login to Amazon ECR
+        id: login-to-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Set short git commit SHA
+        id: short-sha
+        run: |
+          shortSha=$(git rev-parse --short ${{ github.sha }})
+          echo "COMMIT_SHORT_SHA=$shortSha" >> $GITHUB_ENV
+
+      - name: Build, tag, and push docker image to Amazon ECR
+        env:
+          REGISTRY: ${{ steps.login-to-ecr.outputs.registry }}
+          REPOSITORY: github-actions-repo
+          IMAGE_TAG: ${{ env.COMMIT_SHORT_SHA }}
+        run: |
+          docker build -t github-actions-repo .
+          docker tag github-actions-repo:latest $REGISTRY/$REPOSITORY:$IMAGE_TAG
+          docker tag github-actions-repo:latest $REGISTRY/$REPOSITORY:latest
+          docker push --all-tags $REGISTRY/$REPOSITORY
