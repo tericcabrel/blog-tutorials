@@ -2,3 +2,5 @@ node_modules
 .next
 .github
 .husky
+.yarn/cache
+.yarn/install-state.gz
