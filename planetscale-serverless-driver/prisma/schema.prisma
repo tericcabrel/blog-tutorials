@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "mysql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+enum PriceCurrency {
+  EUR
+  USD
+}
+
+model Book {
+  id            Int           @id @default(autoincrement())
+  isbn          String
+  title         String
+  summary       String        @db.Text
+  publishDate   DateTime      @map("publish_date")
+  priceCents    Int           @map("price_cents")
+  priceCurrency PriceCurrency @default(USD) @map("price_currency")
+  isAvailable   Boolean       @default(true) @map("is_available")
+  pages         Int
+  author        String
+  publisher     String
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+  @@map("books")
+}

@@ -1,0 +1,42 @@
+{
+  "name": "bookstore-api",
+  "version": "0.1.0",
+  "description": "A simple bookstore API",
+  "license": "MIT",
+  "bin": {
+    "bookstore-api": "bin/bookstore-api.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "jest",
+    "cdk": "cdk",
+    "gateway": "sam local start-api -t ./cdk.out/BookstoreApiStack.template.json",
+    "synth": "export $(grep -v '^#' .env | xargs) && cdk synth --no-staging",
+    "deploy": "export $(grep -v '^#' .env | xargs) && cdk deploy",
+    "clean": "rm -rf cdk.out",
+    "destroy": "cdk destroy",
+    "bootstrap": "cdk bootstrap",
+    "db:shadow": "docker run -d -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_DATABASE=bookstore --name bookstore-shadow-db -p 3307:3306 mysql:8.0.37",
+    "db:shadow:stop": "docker kill bookstore-shadow-db"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.141",
+    "@types/jest": "^29.5.12",
+    "@types/node": "20.14.2",
+    "aws-cdk": "2.147.2",
+    "jest": "^29.7.0",
+    "prisma": "^5.16.1",
+    "ts-jest": "^29.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.4.5"
+  },
+  "dependencies": {
+    "@planetscale/database": "^1.18.0",
+    "@prisma/client": "5.16.1",
+    "aws-cdk-lib": "2.147.2",
+    "constructs": "^10.0.0",
+    "source-map-support": "^0.5.21"
+  },
+  "packageManager": "yarn@1.22.22+sha256.c17d3797fb9a9115bf375e31bfd30058cac6bc9c3b8807a3d8cb2094794b51ca"
+}
