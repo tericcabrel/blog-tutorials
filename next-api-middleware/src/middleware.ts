@@ -1,18 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 const isAdminRoute = (pathname: string) => {
-    return pathname.startsWith('/api/admin');
+  return pathname.startsWith('/api/admin');
 }
 
 const isUserRoute = (pathname: string) => {
-    return pathname.startsWith('/api/users');
+  return pathname.startsWith('/api/users');
 }
 
 export async function middleware(req: NextRequest) {
   const role = req.headers.get("authorization") ?? '';
   const { pathname } = req.nextUrl;
 
-  if (isUserRoute(pathname) && ["user", "admin"].includes(role)) {
+  if (isUserRoute(pathname) && !["user", "admin"].includes(role)) {
     return NextResponse.redirect(new URL('/api/auth/unauthorized', req.url));
   }
 
@@ -24,5 +24,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-    matcher: ['/api/users/:path*', '/api/admin/:path*']
+  matcher: ['/api/users/:path*', '/api/admin/:path*']
 };
