@@ -1,0 +1,99 @@
+name: Check database migration
+on:
+  pull_request:
+    branches:
+      - 'main'
+    paths:
+      - 'prisma/migrations/**'
+
+env:
+  PLANETSCALE_SERVICE_TOKEN_ID: ${{ secrets.PLANETSCALE_SERVICE_TOKEN_ID }}
+  PLANETSCALE_SERVICE_TOKEN: ${{ secrets.PLANETSCALE_SERVICE_TOKEN }}
+
+jobs:
+  migration-detail:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup pscale
+        uses: planetscale/setup-pscale-action@v1
+
+      - name: Set database branch name
+        run: echo "PSCALE_BRANCH_NAME=$(echo ${{ github.head_ref }} | tr -cd '[:alnum:]-'| tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+
+      - name: Create deploy request on the production branch
+        run: |
+          DEPLOY_REQUEST_STATE=$(pscale deploy-request show ${{ secrets.PLANETSCALE_DATABASE_NAME }} ${{ env.PSCALE_BRANCH_NAME }} --org ${{ secrets.PLANETSCALE_ORG_NAME }} -f json | jq -r '.state')
+
+          echo "Deploy request State: $DEPLOY_REQUEST_STATE"
+
+          if [ "$DEPLOY_REQUEST_STATE" = "open" ]; then
+            echo "Deploy request exists: skipping creation"
+          else
+            echo "Deploy request does not exist : creating..."
+            pscale deploy-request create ${{ secrets.PLANETSCALE_DATABASE_NAME }} ${{ env.PSCALE_BRANCH_NAME }} \
+            --org ${{ secrets.PLANETSCALE_ORG_NAME }} \
+            --into main \
+            --notes "Apply changes to the dev branch"
+          fi
+
+      - name: Get deploy request number
+        run: |
+          DEPLOY_REQUEST_NUMBER=$(pscale deploy-request show ${{ secrets.PLANETSCALE_DATABASE_NAME }} ${{ env.PSCALE_BRANCH_NAME }} --org ${{ secrets.PLANETSCALE_ORG_NAME }} -f json | jq -r '.number')
+          echo "DEPLOY_REQUEST_NUMBER=$DEPLOY_REQUEST_NUMBER" >> $GITHUB_ENV
+
+      - name: Check deployment state
+        continue-on-error: false
+        run: |
+          for i in {1..10}; do
+            DEPLOYMENT_STATE=$(pscale deploy-request show ${{ secrets.PLANETSCALE_DATABASE_NAME }} ${{ env.DEPLOY_REQUEST_NUMBER }} --org ${{ secrets.PLANETSCALE_ORG_NAME }} --format json | jq -r '.deployment_state')
+            echo "Deployment State: $DEPLOYMENT_STATE"
+
+            if [ "$DEPLOYMENT_STATE" = "ready" ]; then
+              echo "Deployment state is ready. Continuing."
+              echo "DEPLOY_REQUEST_OPENED=true" >> $GITHUB_ENV
+              break
+            fi
+
+            echo "Deployment state is not ready. Waiting 2 seconds before checking again."
+            sleep 2
+          done
+
+      - name: Collect the migration diff
+        continue-on-error: false
+        if: ${{ env.DEPLOY_REQUEST_OPENED }}
+        run: |
+          DEPLOY_DATA=$(pscale api organizations/${{ secrets.PLANETSCALE_ORG_NAME }}/databases/${{ secrets.PLANETSCALE_DATABASE_NAME }}/deploy-requests/${{ env.DEPLOY_REQUEST_NUMBER }}/deployment --org planetscale)
+          CAN_DROP_DATA=$(echo "$DEPLOY_DATA" | jq -r '.deploy_operations[] | select(.can_drop_data == true) | .can_drop_data')
+
+          echo "Deploy request opened: https://app.planetscale.com/${{ secrets.PLANETSCALE_ORG_NAME }}/${{ secrets.PLANETSCALE_DATABASE_NAME }}/deploy-requests/${{ env.DEPLOY_REQUEST_NUMBER }}" >> migration-message.txt
+          echo "" >> migration-message.txt
+
+          if [ "$CAN_DROP_DATA" = "true" ]; then
+            echo ":rotating_light: You are dropping a column. Before running the migration make sure to do the following:" >> migration-message.txt
+            echo "" >> migration-message.txt
+
+            echo "1. [ ] Deploy app changes to ensure the column is no longer being used." >> migration-message.txt
+            echo "2. [ ] Once you've verified it's no used, run the deploy request." >> migration-message.txt
+            echo "" >> migration-message.txt
+          else
+            echo "When adding to the schema, the Deploy Request must be run **before** the code is deployed." >> migration-message.txt
+            echo "Please ensure your schema changes are compatible with the application code currently running in production." >> migration-message.txt
+            echo "" >> migration-message.txt
+
+            echo "1. [ ] Successfully run the Deploy Request" >> migration-message.txt
+            echo "2. [ ] Deploy this PR" >> migration-message.txt
+            echo "" >> migration-message.txt
+          fi
+
+          echo "\`\`\`diff" >> migration-message.txt
+          pscale deploy-request diff ${{ secrets.PLANETSCALE_DATABASE_NAME }} ${{ env.DEPLOY_REQUEST_NUMBER }} --org ${{ secrets.PLANETSCALE_ORG_NAME }} -f json | jq -r '.[].raw' >> migration-message.txt
+          echo "\`\`\`" >> migration-message.txt
+
+      - name: Comment pull request with the migration diff
+        uses: thollander/actions-comment-pull-request@v2
+        if: ${{ env.DEPLOY_REQUEST_OPENED }}
+        with:
+          filePath: migration-message.txt

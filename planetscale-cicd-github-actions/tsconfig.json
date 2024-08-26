@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "lib": ["dom"],
+    "outDir": "./build",
+    "strict": true,
+    "baseUrl": "./",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "./src/**/*",
+    "prisma/seed.ts"
+  ],
+  "exclude": [
+    "build",
+    "node_modules"
+  ]
+}

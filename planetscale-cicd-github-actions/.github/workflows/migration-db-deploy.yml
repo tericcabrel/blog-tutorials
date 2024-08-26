@@ -1,0 +1,63 @@
+name: Deploy database migration
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'prisma/migrations/**'
+
+env:
+  PLANETSCALE_SERVICE_TOKEN_ID: ${{ secrets.PLANETSCALE_SERVICE_TOKEN_ID }}
+  PLANETSCALE_SERVICE_TOKEN: ${{ secrets.PLANETSCALE_SERVICE_TOKEN }}
+
+jobs:
+  apply-migration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup pscale
+        uses: planetscale/setup-pscale-action@v1
+
+      - name: Get the branch name and the deploy request number
+        run: |
+          DEPLOYER_REQUEST_LIST=$(pscale deploy-request list ${{ secrets.PLANETSCALE_DATABASE_NAME }} --org ${{ secrets.PLANETSCALE_ORG_NAME }} -f json)
+          DEPLOY_REQUEST_NUMBER=$(echo "$DEPLOYER_REQUEST_LIST" | jq -r '.[] | select(.into_branch == "main" and .state == "open") | .number')
+          PSCALE_BRANCH_NAME=$(echo "$DEPLOYER_REQUEST_LIST" | jq -r '.[] | select(.into_branch == "main" and .state == "open") | .branch')
+          
+          if [ -z "$DEPLOY_REQUEST_NUMBER" ]; then
+            echo "No open deploy request found in the production branch."
+            exit 1
+          fi
+          
+          echo "DEPLOY_REQUEST_NUMBER=$DEPLOY_REQUEST_NUMBER" >> $GITHUB_ENV
+          echo "PSCALE_BRANCH_NAME=$PSCALE_BRANCH_NAME" >> $GITHUB_ENV
+
+      - name: Check deployment state
+        continue-on-error: false
+        run: |
+          for i in {1..10}; do
+            DEPLOYMENT_STATE=$(pscale deploy-request show ${{ secrets.PLANETSCALE_DATABASE_NAME }} ${{ env.DEPLOY_REQUEST_NUMBER }} --org ${{ secrets.PLANETSCALE_ORG_NAME }} -f json | jq -r '.deployment_state')
+            echo "Deployment State: $DEPLOYMENT_STATE"
+          
+            if [ "$DEPLOYMENT_STATE" = "ready" ]; then
+              echo "Deployment state is ready. Continuing."
+              echo "DEPLOY_REQUEST_OPENED=true" >> $GITHUB_ENV
+              break
+            fi
+          
+            echo "Deployment state is not ready. Waiting 2 seconds before checking again."
+            sleep 2
+          done
+
+      - name: Deploy schema migration in the production branch
+        continue-on-error: false
+        run: |
+          pscale deploy-request deploy ${{ secrets.PLANETSCALE_DATABASE_NAME }} ${{ env.DEPLOY_REQUEST_NUMBER }} --org ${{ secrets.PLANETSCALE_ORG_NAME }} --wait
+          pscale deploy-request skip-revert ${{ secrets.PLANETSCALE_DATABASE_NAME }} ${{ env.DEPLOY_REQUEST_NUMBER }} --org ${{ secrets.PLANETSCALE_ORG_NAME }}
+
+      - name: Delete the database branch
+        if: ${{ success() }}
+        run: |
+          pscale branch delete ${{ secrets.PLANETSCALE_DATABASE_NAME }} ${{ env.PSCALE_BRANCH_NAME }} --org ${{ secrets.PLANETSCALE_ORG_NAME }} --force
+          echo "The branch \"${{ env.PSCALE_BRANCH_NAME }}\" has been successfully."
