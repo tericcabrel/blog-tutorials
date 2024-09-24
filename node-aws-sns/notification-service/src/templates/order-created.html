@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .order-details {
+            margin: 20px 0;
+        }
+        .order-items {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .order-items th, .order-items td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .order-items th {
+            background-color: #f4f4f4;
+        }
+        .total {
+            font-weight: bold;
+        }
+        .right-align {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Thank you for your order, {{userName}}!</h1>
+
+    <div class="order-details">
+        <p><strong>Order ID:</strong> {{orderId}}</p>
+        <p><strong>Order Date:</strong> {{orderDate}}</p>
+        <p><strong>Reference:</strong> {{reference}}</p>
+    </div>
+
+    <table class="order-items">
+        <thead>
+        <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each items}}
+        <tr>
+            <td>{{name}}</td>
+            <td>{{quantity}}</td>
+            <td>{{price}}</td>
+        </tr>
+        {{/each}}
+        <tr>
+            <td colspan="2" class="right-align"><strong>Sub total:</strong></td>
+            <td>{{subTotal}}</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="right-align"><strong>VAT ({{vat}}%):</strong></td>
+            <td>{{vatAmount}}</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="right-align"><strong>Total:</strong></td>
+            <td>{{total}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

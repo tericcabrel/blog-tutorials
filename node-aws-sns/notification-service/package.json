@@ -1,0 +1,42 @@
+{
+  "name": "notification-service",
+  "version": "0.1.0",
+  "license": "MIT",
+  "bin": {
+    "notification-service": "bin/notification-service.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "jest",
+    "cdk": "cdk",
+    "synth": "export $(grep -v '#' .env | xargs) && cdk synth",
+    "deploy": "export $(grep -v '#' .env | xargs) && cdk deploy",
+    "clean": "rm -rf cdk.out",
+    "fn:watch": "nodemon --watch \"*.ts\" --exec \"yarn\" synth",
+    "order:created": "sam local invoke NotificationFunction -t ./cdk.out/NotificationServiceStack.template.json -e ./src/handlers/test-data/order-created.json"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "8.10.145",
+    "@types/handlebars": "4.1.0",
+    "@types/jest": "29.5.2",
+    "@types/node": "22.5.5",
+    "@types/nodemailer": "^6.4.16",
+    "aws-cdk": "2.159.1",
+    "esbuild": "0.23.1",
+    "jest": "29.7.0",
+    "ts-jest": "29.2.5",
+    "ts-node": "10.9.2",
+    "typescript": "5.6.2"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "2.159.1",
+    "axios": "1.7.7",
+    "constructs": "10.3.0",
+    "handlebars": "4.7.8",
+    "nodemailer": "6.9.15",
+    "source-map-support": "0.5.21",
+    "zod": "3.23.8"
+  },
+  "packageManager": "yarn@1.22.22+sha256.c17d3797fb9a9115bf375e31bfd30058cac6bc9c3b8807a3d8cb2094794b51ca"
+}

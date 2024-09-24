@@ -1,0 +1,44 @@
+{
+  "name": "core-service",
+  "version": "0.1.0",
+  "license": "MIT",
+  "bin": {
+    "core-service": "bin/core-service.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "jest",
+    "cdk": "cdk",
+    "synth": "export $(grep -v '#' .env | xargs) && cdk synth --no-staging",
+    "deploy": "export $(grep -v '#' .env | xargs) && cdk deploy",
+    "clean": "rm -rf cdk.out",
+    "fn:watch": "nodemon --watch \"*.ts\" --exec \"yarn\" synth",
+    "process:order": "sam local invoke ProcessOrderFunction -t ./cdk.out/CoreServiceStack.template.json -e ./src/handlers/test-data/process-order.json",
+    "find:user": "sam local invoke FindUserFunction -t ./cdk.out/CoreServiceStack.template.json -e ./src/handlers/test-data/find-user.json",
+    "find:order": "sam local invoke FindOrderFunction -t ./cdk.out/CoreServiceStack.template.json -e ./src/handlers/test-data/find-order.json",
+    "gateway": "sam local start-api -t ./cdk.out/CoreServiceStack.template.json",
+    "db:seed": "ts-node ./src/utils/seed.ts"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "8.10.145",
+    "@types/jest": "29.5.13",
+    "@types/node": "22.5.5",
+    "aws-cdk": "2.159.1",
+    "dotenv": "16.4.5",
+    "jest": "29.7.0",
+    "nodemon": "3.1.7",
+    "ts-jest": "29.2.5",
+    "ts-node": "10.9.2",
+    "typescript": "5.6.2"
+  },
+  "dependencies": {
+    "@aws-sdk/client-sns": "^3.654.0",
+    "aws-cdk-lib": "2.159.1",
+    "constructs": "10.3.0",
+    "mongoose": "7.3.3",
+    "source-map-support": "0.5.21",
+    "zod": "3.23.8"
+  },
+  "packageManager": "yarn@1.22.22+sha256.c17d3797fb9a9115bf375e31bfd30058cac6bc9c3b8807a3d8cb2094794b51ca"
+}
