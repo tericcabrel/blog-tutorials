@@ -3,7 +3,7 @@
 This project is a REST API with all the endpoints documented built with Node.js and Express.
 
 ## Prerequisites
-- Node.js 10+
+- Node.js 20+
 - Yarn or NPM
 
 ## Installation
