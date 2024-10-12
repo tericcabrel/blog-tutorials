@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { createRole, deleteRole, getAllRoles, getRole, updateRole } from '../controllers/role.controller';
 
-const roleRoute = () => {
+export const roleRoutes = () => {
   const router = Router();
 
   router.post('/roles', createRole);
@@ -16,5 +16,3 @@ const roleRoute = () => {
 
   return router;
 };
-
-export { roleRoute };

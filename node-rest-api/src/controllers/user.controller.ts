@@ -10,7 +10,7 @@ const hashPassword = (password: string) => {
   return crypto.pbkdf2Sync(password, salt, 100, 64, `sha512`).toString(`hex`);
 };
 
-const createUser = async (req: Request, res: Response) => {
+export const createUser = async (req: Request, res: Response) => {
   const { email, enabled, fullName, password, role } = req.body;
 
   if (!email || !fullName || !password || !role) {
@@ -30,13 +30,13 @@ const createUser = async (req: Request, res: Response) => {
   return res.status(201).json({ data: userCreated });
 };
 
-const getAllUsers = async (req: Request, res: Response) => {
+export const getAllUsers = async (req: Request, res: Response) => {
   const users = await User.find().populate('role').sort('-createdAt').exec();
 
   return res.status(200).json({ data: users });
 };
 
-const getUser = async (req: Request, res: Response) => {
+export const getUser = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   const user = await User.findOne({ _id: id }).populate('role').exec();
@@ -48,7 +48,7 @@ const getUser = async (req: Request, res: Response) => {
   return res.status(200).json({ data: user });
 };
 
-const updateUser = async (req: Request, res: Response) => {
+export const updateUser = async (req: Request, res: Response) => {
   const { id } = req.params;
   const { enabled, fullName, role } = req.body;
 
@@ -69,12 +69,10 @@ const updateUser = async (req: Request, res: Response) => {
   return res.status(200).json({ data: userUpdated });
 };
 
-const deleteUser = async (req: Request, res: Response) => {
+export const deleteUser = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   await User.findByIdAndDelete(id);
 
   return res.status(200).json({ message: 'User deleted successfully.' });
 };
-
-export { createUser, deleteUser, getAllUsers, getUser, updateUser };

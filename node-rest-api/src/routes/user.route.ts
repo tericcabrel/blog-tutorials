@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { createUser, deleteUser, getAllUsers, getUser, updateUser } from '../controllers/user.controller';
 
-const userRoute = () => {
+export const userRoutes = () => {
   const router = Router();
 
   router.post('/users', createUser);
@@ -16,5 +16,3 @@ const userRoute = () => {
 
   return router;
 };
-
-export { userRoute };
