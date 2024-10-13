@@ -1,6 +1,6 @@
 import mongoose, { ClientSession } from "mongoose";
-import {User} from "./models/user.model";
-import {Product} from "./models/product.model";
+import { User } from "./models/user.model";
+import { Product } from "./models/product.model";
 
 type TransactionCallback = (session: ClientSession) => Promise<void>;
 
@@ -25,7 +25,7 @@ export const runInTransaction = async (callback: TransactionCallback) => {
     throw error;
   } finally {
     // Ending the session
-    session.endSession();
+    await session.endSession();
   }
 };
 

@@ -81,6 +81,6 @@ export const processUserOrderFail = async () => {
     throw error;
   } finally {
     // Ending the session
-    session.endSession();
+    await session.endSession();
   }
 };
