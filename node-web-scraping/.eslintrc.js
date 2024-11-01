@@ -2,13 +2,13 @@ module.exports = {
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   extends: [
     'plugin:@typescript-eslint/recommended', // Uses the recommended rules from the @typescript-eslint/eslint-plugin
-    'prettier/@typescript-eslint', // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
     'plugin:prettier/recommended', // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
   ],
   plugins: ['sort-destructure-keys'],
   parserOptions: {
-    ecmaVersion: 2020, // Allows for the parsing of modern ECMAScript features
+    ecmaVersion: 'latest', // Allows for the parsing of modern ECMAScript features
     sourceType: 'module', // Allows for the use of imports
+    project: 'tsconfig.json'
   },
   env: {
     es6: true,
@@ -25,7 +25,7 @@ module.exports = {
     'no-use-before-define': 'error',
     'max-len': ['error', 150],
     '@typescript-eslint/ban-ts-comment': 'off',
-    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'sort-destructure-keys/sort-destructure-keys': 2,
     '@typescript-eslint/member-ordering': 'error',

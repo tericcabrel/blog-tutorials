@@ -1,9 +1,6 @@
 import express from 'express';
-import dotenv from 'dotenv';
-import { connectToDatabase } from './databaseConnection';
-import { Language } from './models/language';
-
-dotenv.config();
+import { connectToDatabase } from './db-connection';
+import { Language } from './models/languages';
 
 const HOST = process.env.HOST || 'http://localhost';
 const PORT = parseInt(process.env.PORT || '4500');

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as cheerio from 'cheerio';
-import { Language } from './models/language';
-import { connectToDatabase } from './databaseConnection';
+import { connectToDatabase } from './db-connection';
+import { Language } from './models/languages';
 
 const PAGE_URL = 'https://en.wikipedia.org/wiki/Timeline_of_programming_languages';
 
@@ -23,10 +23,10 @@ const formatYear = (input: string) => {
   return [+array[0], +(array[1].length < 4 ? `${array[0].substr(0, 2)}${array[1]}` : array[1])];
 };
 
-const retrieveData = (content: string) => {
+const extractLanguagesData = (content: string) => {
   const $ = cheerio.load(content);
 
-  const headers = $('body h2');
+  const headers = $('body .mw-heading2');
 
   const languages: ProgrammingLanguage[] = [];
 
@@ -38,7 +38,7 @@ const retrieveData = (content: string) => {
       continue;
     }
 
-    const yearCategory = header.children('span').first().text();
+    const yearCategory = header.children('h2').first().text();
     const tableRows = table.children('tbody').children('tr');
 
     for (let i = 0; i < tableRows.length; i++) {
@@ -72,7 +72,7 @@ const retrieveData = (content: string) => {
 const scraper = async () => {
   const response = await axios.get(PAGE_URL);
 
-  const languages = retrieveData(response.data);
+  const languages = extractLanguagesData(response.data);
 
   await connectToDatabase();
 

@@ -1,15 +1,16 @@
-# Node Web Scraping
+# Node TypeScript Starter
 
-This project shows how to scrape data from a website, store these data retrieved in the database then create and endpoint to expose them to the world.
+This project contains a minimal starter for Node.js project with TypeScript, ESLint and Prettier that connect to a MongoDB database.
 
 ## Prerequisites
-- Node.js 10+
-- Yarn or NPM
+- Node.js 20.6.0 or higher
+- Yarn
+- MongoDB
 
-## Installation
-- Install dependencies
+## Getting Started
+Run a Docker container of MongoDB
 ```bash
-yarn install
+docker run -d --rm -e MONGO_INITDB_ROOT_USERNAME=user -e MONGO_INITDB_ROOT_PASSWORD=secret -p 27018:27017 --name mongodb mongo:8.0
 ```
 
 - Create application configuration
@@ -17,16 +18,16 @@ yarn install
 cp .env.example .env
 nano .env
 ```
+In the `.env` file, set the MONGODB_URL to `mongodb://user:secret@localhost:27018/admin`
 
-- Scrape programming languages from Wikipedia page
+## Installation
+- Install dependencies
 ```bash
-yarn scrape
+yarn install
 ```
 
 - Start Application
 ```bash
 yarn start
 ```
-Browse `http://localhost:4500/languages` to view languages retrieved by the scraper.
-
-The application will be launched by [Nodemon](https://nodemon.com). It will restart automatically on file change
+The application is launched by [Nodemon,](https://nodemon.com) which automatically restart the application on file change.
