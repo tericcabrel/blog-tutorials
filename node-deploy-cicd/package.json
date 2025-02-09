@@ -1,0 +1,43 @@
+{
+  "name": "node-build-docker",
+  "version": "1.0.0",
+  "description": "REST API with all the endpoints documented built with Node.js and Express",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -b",
+    "start": "node -r ts-node/register --watch --env-file=.env ./src/index.ts",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "prepare": "husky",
+    "test": "echo \"Error: no test found\""
+  },
+  "devDependencies": {
+    "@types/express": "4.17.11",
+    "@types/node": "20.14.2",
+    "@types/swagger-ui-express": "4.1.7",
+    "@typescript-eslint/eslint-plugin": "7.12.0",
+    "@typescript-eslint/parser": "7.12.0",
+    "eslint": "8.57.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-prettier": "5.2.3",
+    "eslint-plugin-sort-destructure-keys": "2.0.0",
+    "husky": "9.1.7",
+    "lint-staged": "15.4.3",
+    "prettier": "3.3.1",
+    "ts-node": "10.9.2",
+    "typescript": "5.7.3"
+  },
+  "dependencies": {
+    "express": "4.17.1",
+    "mongoose": "8.9.6",
+    "swagger-ui-express": "4.1.6"
+  },
+  "lint-staged": {
+    "**/*.ts?(x)": [
+      "eslint src --fix",
+      "prettier --write"
+    ]
+  },
+  "packageManager": "yarn@1.22.22+sha256.c17d3797fb9a9115bf375e31bfd30058cac6bc9c3b8807a3d8cb2094794b51ca"
+}
