@@ -1,0 +1,73 @@
+name: Build and release the project
+on:
+  push:
+    branches: [ main ]
+
+env:
+  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.head_ref || github.run_id }}"
+  cancel-in-progress: true
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: "${{ runner.os }}-yarn-${{ hashFiles('**/*.yarn.lock') }}"
+          restore-keys: ${{ runner.os }}-yarn-
+
+      - name: Set up Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install Node,js dependencies
+        run: yarn install
+
+      - name: Lint the projects
+        run: yarn lint
+
+      - name: Build the projects
+        run: yarn tsc -b
+
+      - name: Run tests
+        run: echo "No tests to run"
+
+      - name: Generate Application Version
+        run: |
+          RELEASE_VERSION=$(cat package.json | jq -r '.version')
+          echo "APP_VERSION=$RELEASE_VERSION" >> $GITHUB_ENV
+
+      - name: Build Project for Production
+        run: |
+          yarn esbuild ./src/index.ts --bundle --minify --sourcemap --platform=node --outfile=build/index.js
+
+      - name: Install Sentry CLI
+        run: |
+          curl -sL https://sentry.io/get-cli/ | bash
+          echo "export PATH=$PATH:$HOME/.local/bin" >> $GITHUB_ENV
+
+      - name: Release and upload source maps
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: tericcabrel
+          SENTRY_PROJECT: my-node-app
+          SENTRY_RELEASE: ${{ env.APP_VERSION }}
+        run: |
+          sentry-cli releases new "$SENTRY_RELEASE"
+          sentry-cli sourcemaps inject ./build
+          sentry-cli sourcemaps upload --release=$SENTRY_RELEASE ./build
+          sentry-cli releases finalize "$SENTRY_RELEASE"
+
+      - name: Build the Docker image
+        run: |
+          docker build --build-arg APP_VERSION=${{ env.APP_VERSION }} -t tericcabrel/my-node-app:latest .
+          # TODO: tag and push the image to a Docker repository
